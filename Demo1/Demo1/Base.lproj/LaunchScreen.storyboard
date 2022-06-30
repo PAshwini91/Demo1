@@ -17,18 +17,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hannaInst" translatesAutoresizingMaskIntoConstraints="NO" id="w5E-bD-4ji">
-                                <rect key="frame" x="47" y="289" width="320" height="318"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="318" id="S3B-v0-mcn"/>
-                                    <constraint firstAttribute="width" constant="320" id="oov-zL-fOR"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="w5E-bD-4ji" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="2BY-ee-dJo"/>
-                            <constraint firstItem="w5E-bD-4ji" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="p6G-Wi-NHz"/>
+                            <constraint firstItem="w5E-bD-4ji" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="AvP-fu-Y6x"/>
+                            <constraint firstItem="w5E-bD-4ji" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xxz-fP-a7t"/>
+                            <constraint firstItem="w5E-bD-4ji" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="xyX-gm-kRS"/>
+                            <constraint firstAttribute="bottom" secondItem="w5E-bD-4ji" secondAttribute="bottom" id="z29-25-3xQ"/>
                         </constraints>
                     </view>
                 </viewController>

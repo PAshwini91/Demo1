@@ -13,12 +13,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        if UIDevice.current.orientation.isLandscape {
-//            profile.sv_profile.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-//        } else {
-//            profile.sv_profile.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 900)
-//        }
-        
         profile.txt_firstName.delegate = self
         profile.txt_firstName.tag = 1
         profile.txt_firstName.returnKeyType = .next
@@ -59,11 +53,13 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
         profile.txt_country.tag = 10
         profile.txt_country.returnKeyType = .done
         
-        profile.btn_resetPassword.tintColor = UIColor(hexaRGB: "#2D69B1")
-        profile.btn_logOut.tintColor = UIColor(hexaRGB: "#2D69B1")
-        profile.btn_deleteAccount.tintColor = UIColor(hexaRGB: "#2D69B1")
-        
         view.addSubview(profile)
+        
+        let settingsItem = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(saveButtonTapped(_:)))
+        navigationItem.rightBarButtonItem = settingsItem
+        navigationItem.rightBarButtonItem?.image = UIImage(systemName: "gear")
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(hexaRGB: "#2D69B1")
+      
     }
 
     override func viewDidLoad() {
@@ -111,9 +107,42 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
         self.present(homeVC, animated: true)
     }
     
+    @objc func saveButtonTapped(_ sender: UIBarButtonItem) {
+        let dialogMessage = UIAlertController(title: "Account Settings", message: "" , preferredStyle: .actionSheet)
+        
+        let resetPassword = UIAlertAction(title: "Reset Password", style: .default) { (action) -> Void in
+            print("Reset Password button tapped")
+        }
+        
+        let logOut = UIAlertAction(title: "Logout", style: .default) { (action) -> Void in
+            print("Logout button tapped")
+        }
+        
+        let delete = UIAlertAction(title: "Delete Account", style: .destructive) { (action) -> Void in
+            print("Delete Account button tapped")
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+            print("Cancel button tapped")
+        }
+        
+        dialogMessage.addAction(resetPassword)
+        dialogMessage.addAction(logOut)
+        dialogMessage.addAction(delete)
+        dialogMessage.addAction(cancel)
+        
+        if let popoverController = dialogMessage.popoverPresentationController {
+            popoverController.barButtonItem = navigationItem.rightBarButtonItem//to set the source of your alert
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0) // you can set this as per your requirement.
+//            popoverController.permittedArrowDirections = [] //to hide the arrow of any particular direction
+        }
+        
+        self.present(dialogMessage, animated: true, completion: nil)
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        profile.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        profile.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: self.view.bounds.height)
     }
 
 }

@@ -17,6 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var isSeen = false
     var homePage = HomePage(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     let menuItemDetails = [menu(imageName: "homekit", title: "Home"), menu(imageName: "clock", title: "Log History"), menu(imageName: "info.circle", title: "Information"), menu(imageName: "questionmark.circle", title: "Registration"), menu(imageName: "arrow.right.circle", title: "Log Out"), menu(imageName: "person.crop.circle", title: "Profile Page")]
+    let backItem = UIBarButtonItem()
     
     override func viewWillAppear(_ animated: Bool) {
         let newSize = CGSize(width: 70, height: 30)
@@ -130,7 +131,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showHide()
         
-        let backItem = UIBarButtonItem()
         switch menuItemDetails[indexPath.row].title {
         case "Registration" :
             backItem.title = "Back"
@@ -198,7 +198,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        homePage.frame = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        homePage.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: self.view.bounds.height)
     }
 }
-

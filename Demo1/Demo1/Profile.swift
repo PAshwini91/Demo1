@@ -13,7 +13,6 @@ import UIKit
 
 class Profile: UIView {
     
-//    @IBOutlet var sv_profile: UIScrollView!
     @IBOutlet var lbl_firstName: UILabel!
     @IBOutlet var txt_firstName: UITextField!
     @IBOutlet var lbl_lastName: UILabel!
@@ -34,9 +33,7 @@ class Profile: UIView {
     @IBOutlet var txt_zipcode: UITextField!
     @IBOutlet var lbl_country: UILabel!
     @IBOutlet var txt_country: UITextField!
-    @IBOutlet var btn_resetPassword: UIButton!
-    @IBOutlet var btn_logOut: UIButton!
-    @IBOutlet var btn_deleteAccount: UIButton!
+    @IBOutlet var btn_save: UIButton!
     
     var onClickDelegate: OnClickDelegate?
     
@@ -58,16 +55,6 @@ class Profile: UIView {
     }
 
     @IBAction func saveDetails(_ sender: UIButton) {
-    }
-    
-    @IBAction func resetPassword(_ sender: UIButton) {
-    }
-    
-    @IBAction func logOut(_ sender: UIButton) {
         onClickDelegate?.onClick()
     }
-    
-    @IBAction func deleteAccount(_ sender: Any) {
-    }
-    
 }
