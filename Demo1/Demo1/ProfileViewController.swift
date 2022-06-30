@@ -65,17 +65,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        profile.lbl_firstName.sizeToFit()
-//        profile.lbl_lastName.sizeToFit()
-//        profile.lbl_companyName.sizeToFit()
-//        profile.lbl_mobileNumber.sizeToFit()
-//        profile.lbl_address.sizeToFit()
-//        profile.lbl_addressSec.sizeToFit()
-//        profile.lbl_state.sizeToFit()
-//        profile.lbl_city.sizeToFit()
-//        profile.lbl_zipcode.sizeToFit()
-//        profile.lbl_country.sizeToFit()
-        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,
             action: #selector(dismissMyKeyboard))
