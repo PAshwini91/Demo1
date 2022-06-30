@@ -128,16 +128,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if UIDevice.current.orientation.isPortrait{
-//            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-//                self.homePage.vw_menu.frame = CGRect(x: -self.homePage.vw_menu.bounds.width, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
-//            }, completion: nil)
-//        } else {
-//            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-//                self.homePage.vw_menu.frame = CGRect(x: -self.homePage.vw_menu.bounds.width, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
-//            }, completion: nil)
-//        }
-//        isSeen = false
         showHide()
         
         let backItem = UIBarButtonItem()
@@ -179,24 +169,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             homePage.vw_menu.isHidden = false
             if UIDevice.current.orientation.isPortrait {
                 homePage.vw_menu.frame = CGRect(x: -UIScreen.main.bounds.width, y: 0, width: homePage.vw_menu.bounds.width, height: UIScreen.main.bounds.height)
-                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                     self.homePage.vw_menu.frame = CGRect(x: 0, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
                 }, completion: nil)
             } else {
                 homePage.vw_menu.frame = CGRect(x: -UIScreen.main.bounds.width, y: 0, width: homePage.vw_menu.bounds.width, height: UIScreen.main.bounds.height)
-                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                     self.homePage.vw_menu.frame = CGRect(x: 0, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
                 }, completion: nil)
             }
         } else {
             if UIDevice.current.orientation.isPortrait {
-                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                     self.homePage.vw_menu.frame = CGRect(x: -self.homePage.vw_menu.bounds.width, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
                 }, completion: {_ in
                     self.homePage.vw_menu.isHidden = true
                 })
             } else {
-                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                     self.homePage.vw_menu.frame = CGRect(x: -self.homePage.vw_menu.bounds.width, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
                 }, completion: {_ in
                     self.homePage.vw_menu.isHidden = true
