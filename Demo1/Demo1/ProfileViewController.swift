@@ -8,6 +8,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDelegate {
+    
     var profile = Profile(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     override func viewWillAppear(_ animated: Bool) {

@@ -53,7 +53,7 @@ class Profile: UIView {
         viewFromXIB.frame = self.bounds
         addSubview(viewFromXIB)
     }
-
+   
     @IBAction func saveDetails(_ sender: UIButton) {
         onClickDelegate?.onClick()
     }

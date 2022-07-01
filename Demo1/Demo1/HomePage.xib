@@ -68,7 +68,7 @@
                         <constraint firstAttribute="height" constant="100" id="NTC-GQ-atd"/>
                         <constraint firstAttribute="height" constant="100" id="rNU-6G-8lO"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" red="0.1764705926" green="0.41176474089999998" blue="0.69411766529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                     <variation key="default">
@@ -214,18 +214,18 @@
                     <exclude reference="St8-A1-2SJ"/>
                     <exclude reference="bYg-KC-M97"/>
                     <exclude reference="fbE-Xz-Wl2"/>
-                    <exclude reference="Cyi-N9-YgX"/>
-                    <exclude reference="SpO-8D-xxF"/>
-                    <exclude reference="THP-UF-Oei"/>
-                    <exclude reference="vDb-EI-rmf"/>
-                    <exclude reference="x3N-b4-2rm"/>
-                    <exclude reference="yCS-8d-yWQ"/>
                     <exclude reference="6Yh-FV-cku"/>
                     <exclude reference="Be0-d2-Uqh"/>
                     <exclude reference="D6a-Kb-Pgr"/>
                     <exclude reference="LTj-bA-swD"/>
                     <exclude reference="YpZ-g3-qmH"/>
                     <exclude reference="dx7-8z-eoS"/>
+                    <exclude reference="Cyi-N9-YgX"/>
+                    <exclude reference="SpO-8D-xxF"/>
+                    <exclude reference="THP-UF-Oei"/>
+                    <exclude reference="vDb-EI-rmf"/>
+                    <exclude reference="x3N-b4-2rm"/>
+                    <exclude reference="yCS-8d-yWQ"/>
                 </mask>
             </variation>
             <variation key="heightClass=compact">
@@ -233,11 +233,11 @@
                     <include reference="22a-x4-iKd"/>
                     <include reference="MYe-1j-sOz"/>
                     <include reference="pTC-Tn-bPU"/>
+                    <include reference="LTj-bA-swD"/>
+                    <include reference="YpZ-g3-qmH"/>
                     <include reference="vDb-EI-rmf"/>
                     <include reference="x3N-b4-2rm"/>
                     <include reference="yCS-8d-yWQ"/>
-                    <include reference="LTj-bA-swD"/>
-                    <include reference="YpZ-g3-qmH"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -246,10 +246,10 @@
                     <include reference="QmV-0B-8hb"/>
                     <include reference="zs5-6w-2Ee"/>
                     <include reference="St8-A1-2SJ"/>
-                    <include reference="SpO-8D-xxF"/>
-                    <include reference="THP-UF-Oei"/>
                     <include reference="6Yh-FV-cku"/>
                     <include reference="dx7-8z-eoS"/>
+                    <include reference="SpO-8D-xxF"/>
+                    <include reference="THP-UF-Oei"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=regular">
@@ -259,9 +259,9 @@
                     <include reference="yjd-iE-eNf"/>
                     <include reference="bYg-KC-M97"/>
                     <include reference="fbE-Xz-Wl2"/>
-                    <include reference="Cyi-N9-YgX"/>
                     <include reference="Be0-d2-Uqh"/>
                     <include reference="D6a-Kb-Pgr"/>
+                    <include reference="Cyi-N9-YgX"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="135.38461538461539" y="98.104265402843595"/>

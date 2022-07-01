@@ -32,11 +32,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         homePage.tbl_menu.dataSource = self
         homePage.tbl_menu.delegate = self
         homePage.tbl_menu.isScrollEnabled = true
+        
+//        homePage.vw_menu.frame = CGRect(x: 0, y: 0, width: self.homePage.vw_menu.bounds.width, height: UIScreen.main.bounds.height)
+        
         self.view.addSubview(homePage)
         
         if UIDevice.current.orientation.isPortrait {
 
-            self.homePage.vw_menu.frame = CGRect(x: -self.homePage.vw_menu.bounds.width, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
+            self.homePage.vw_menu.frame = CGRect(x: -self.homePage.vw_menu.bounds.width, y: 60, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
         } else {
             self.homePage.vw_menu.frame = CGRect(x: -self.homePage.vw_menu.bounds.width, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
         }
@@ -169,25 +172,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             homePage.vw_menu.isHidden = false
             if UIDevice.current.orientation.isPortrait {
                 homePage.vw_menu.frame = CGRect(x: -UIScreen.main.bounds.width, y: 0, width: homePage.vw_menu.bounds.width, height: UIScreen.main.bounds.height)
-                UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                     self.homePage.vw_menu.frame = CGRect(x: 0, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
                 }, completion: nil)
             } else {
                 homePage.vw_menu.frame = CGRect(x: -UIScreen.main.bounds.width, y: 0, width: homePage.vw_menu.bounds.width, height: UIScreen.main.bounds.height)
-                UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                     self.homePage.vw_menu.frame = CGRect(x: 0, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
                 }, completion: nil)
             }
         } else {
             if UIDevice.current.orientation.isPortrait {
-                UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                     self.homePage.vw_menu.frame = CGRect(x: -self.homePage.vw_menu.bounds.width, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
                 }, completion: {_ in
                     self.homePage.vw_menu.isHidden = true
                 })
             } else {
-                UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                    self.homePage.vw_menu.frame = CGRect(x: -self.homePage.vw_menu.bounds.width, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.homePage.vw_menu.frame = CGRect(x: -self.homePage.vw_menu.bounds.width, y: 30, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
                 }, completion: {_ in
                     self.homePage.vw_menu.isHidden = true
                 })

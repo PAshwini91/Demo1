@@ -28,7 +28,7 @@
                     <rect key="frame" x="10" y="0.0" width="647" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="2nh-eq-Ldf"/>
-                        <constraint firstAttribute="height" constant="180" id="rZ0-oj-FBJ"/>
+                        <constraint firstAttribute="height" constant="100" id="rZ0-oj-FBJ"/>
                         <constraint firstAttribute="height" constant="90" id="rid-Al-lPX"/>
                     </constraints>
                     <variation key="default">
@@ -219,16 +219,18 @@
                     </connections>
                 </switch>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accept terms and conditions." textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3X-SL-YxI">
-                    <rect key="frame" x="114" y="264" width="498" height="18"/>
+                    <rect key="frame" x="109" y="267" width="503" height="13"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="18" id="Ycb-GL-w4Q"/>
-                        <constraint firstAttribute="height" constant="30" id="uIj-tb-GLJ"/>
+                        <constraint firstAttribute="height" constant="13" id="Fva-wE-6lq"/>
+                        <constraint firstAttribute="height" constant="13" id="Ycb-GL-w4Q"/>
+                        <constraint firstAttribute="height" constant="13" id="uIj-tb-GLJ"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="Fva-wE-6lq"/>
                             <exclude reference="Ycb-GL-w4Q"/>
                             <exclude reference="uIj-tb-GLJ"/>
                         </mask>
@@ -241,6 +243,11 @@
                     <variation key="heightClass=regular-widthClass=compact">
                         <mask key="constraints">
                             <include reference="uIj-tb-GLJ"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=regular">
+                        <mask key="constraints">
+                            <include reference="Fva-wE-6lq"/>
                         </mask>
                     </variation>
                 </label>
@@ -276,8 +283,9 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="I3X-SL-YxI" firstAttribute="leading" secondItem="pQ2-uZ-rgZ" secondAttribute="trailing" constant="10" id="07n-c4-RRu"/>
+                <constraint firstItem="I3X-SL-YxI" firstAttribute="leading" secondItem="pQ2-uZ-rgZ" secondAttribute="trailing" constant="5" id="07n-c4-RRu"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Aqy-lR-8uM" secondAttribute="trailing" constant="55" id="33C-gP-dHV"/>
+                <constraint firstItem="I3X-SL-YxI" firstAttribute="top" secondItem="niM-VO-eeK" secondAttribute="bottom" constant="17" id="7o4-P1-OBJ"/>
                 <constraint firstItem="KvE-F8-XsI" firstAttribute="top" secondItem="k9E-rX-b0G" secondAttribute="bottom" constant="10" id="BMj-jr-u9R"/>
                 <constraint firstItem="Dgr-IQ-KUO" firstAttribute="top" secondItem="VPA-Ic-v3P" secondAttribute="bottom" constant="10" id="CM7-Cc-gNF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="h1N-85-Z72" secondAttribute="trailing" constant="55" id="Fs8-yK-w61"/>
@@ -296,14 +304,37 @@
                 <constraint firstItem="niM-VO-eeK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="55" id="g8U-Hk-kdz"/>
                 <constraint firstItem="h1N-85-Z72" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="55" id="htF-dE-dFY"/>
                 <constraint firstItem="pQ2-uZ-rgZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="55" id="mgB-vR-JHO"/>
-                <constraint firstItem="I3X-SL-YxI" firstAttribute="top" secondItem="niM-VO-eeK" secondAttribute="bottom" constant="14" id="pXN-v8-HuM"/>
+                <constraint firstItem="I3X-SL-YxI" firstAttribute="top" secondItem="niM-VO-eeK" secondAttribute="bottom" constant="17" id="pXN-v8-HuM"/>
                 <constraint firstItem="k9E-rX-b0G" firstAttribute="top" secondItem="Dgr-IQ-KUO" secondAttribute="bottom" constant="10" id="seD-Xz-L1x"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="k9E-rX-b0G" secondAttribute="trailing" constant="55" id="ukY-1V-hyD"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="niM-VO-eeK" secondAttribute="trailing" constant="55" id="vr0-NA-Lyn"/>
                 <constraint firstItem="k9E-rX-b0G" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="55" id="wPI-91-lRO"/>
                 <constraint firstItem="VPA-Ic-v3P" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="xFy-7p-wnb"/>
+                <constraint firstItem="I3X-SL-YxI" firstAttribute="top" secondItem="niM-VO-eeK" secondAttribute="bottom" constant="19" id="yIQ-hm-QdR"/>
             </constraints>
-            <point key="canvasLocation" x="134.78260869565219" y="96.428571428571431"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="7o4-P1-OBJ"/>
+                    <exclude reference="pXN-v8-HuM"/>
+                    <exclude reference="yIQ-hm-QdR"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=compact">
+                <mask key="constraints">
+                    <include reference="7o4-P1-OBJ"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="constraints">
+                    <include reference="pXN-v8-HuM"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=regular">
+                <mask key="constraints">
+                    <include reference="yIQ-hm-QdR"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="134.48275862068968" y="95.200000000000003"/>
         </view>
     </objects>
     <resources>
