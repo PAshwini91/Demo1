@@ -32,9 +32,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         homePage.tbl_menu.dataSource = self
         homePage.tbl_menu.delegate = self
         homePage.tbl_menu.isScrollEnabled = true
-        
-//        homePage.vw_menu.frame = CGRect(x: 0, y: 0, width: self.homePage.vw_menu.bounds.width, height: UIScreen.main.bounds.height)
-        
+       
         self.view.addSubview(homePage)
         
         if UIDevice.current.orientation.isPortrait {
