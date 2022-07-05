@@ -7,6 +7,10 @@
 
 import UIKit
 
+@objc protocol OnOffDelegate {
+    func switchedOnOff()
+}
+
 class SignUp: UIView {
     
     @IBOutlet var txt_firstName: UITextField!
@@ -14,18 +18,20 @@ class SignUp: UIView {
     @IBOutlet var txt_email: UITextField!
     @IBOutlet var txt_password: UITextField!
     @IBOutlet var txt_confirmPassword: UITextField!
+    @IBOutlet var sw_termsConditions: UISwitch!
     @IBOutlet var lbl_termsConditions: UILabel!
     @IBOutlet var btn_signUp: UIButton!
     
-    var switchStatus = Bool()
+//    var switchStatus = Bool()
+    var onClickDelegate: OnClickDelegate?
+    var OnOffDelegate: OnOffDelegate?
     
     @IBAction func didTurnOnOrOff(_ sender: UISwitch) {
-        switchStatus = sender.isOn
-        if switchStatus {
-            print("On")
-        } else {
-            print("Off")
-        }
+        OnOffDelegate?.switchedOnOff()
+    }
+    
+    @IBAction func signUp(_ sender: UIButton) {
+        onClickDelegate?.onClick()
     }
     
     override init(frame: CGRect) {

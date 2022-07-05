@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		1F4AC6CA286054230032C57A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AC6C8286054230032C57A /* SignUpViewController.swift */; };
 		1F4AC6CB286054230032C57A /* SignUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4AC6C9286054230032C57A /* SignUp.xib */; };
+		1F7FD28A2872B7E900AE2D54 /* DemoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FD2882872B7E900AE2D54 /* DemoModel.xcdatamodeld */; };
+		1F7FD28D2872FFCA00AE2D54 /* UserListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FD28B2872FFCA00AE2D54 /* UserListTableViewController.swift */; };
+		1F7FD28E2872FFCA00AE2D54 /* UserListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7FD28C2872FFCA00AE2D54 /* UserListTableViewController.xib */; };
+		1F7FD292287302E400AE2D54 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FD290287302E400AE2D54 /* UserTableViewCell.swift */; };
+		1F7FD293287302E400AE2D54 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7FD291287302E400AE2D54 /* UserTableViewCell.xib */; };
 		1F97496D2861ECBE00A414F1 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97496C2861ECBE00A414F1 /* SignUp.swift */; };
 		1F97496F2863142300A414F1 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97496E2863142300A414F1 /* Profile.swift */; };
 		1F9749712863143400A414F1 /* Profile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F9749702863143400A414F1 /* Profile.xib */; };
@@ -25,7 +30,6 @@
 		1FFBE2222859F1EC00B4DA56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFBE2212859F1EC00B4DA56 /* ViewController.swift */; };
 		1FFBE2272859F1ED00B4DA56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FFBE2262859F1ED00B4DA56 /* Assets.xcassets */; };
 		1FFBE22A2859F1ED00B4DA56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FFBE2282859F1ED00B4DA56 /* LaunchScreen.storyboard */; };
-		1FFBE2352859F1EE00B4DA56 /* Demo1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFBE2342859F1EE00B4DA56 /* Demo1Tests.swift */; };
 		1FFBE23F2859F1EE00B4DA56 /* Demo1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFBE23E2859F1EE00B4DA56 /* Demo1UITests.swift */; };
 		1FFBE2412859F1EE00B4DA56 /* Demo1UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFBE2402859F1EE00B4DA56 /* Demo1UITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +54,11 @@
 /* Begin PBXFileReference section */
 		1F4AC6C8286054230032C57A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1F4AC6C9286054230032C57A /* SignUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUp.xib; sourceTree = "<group>"; };
+		1F7FD2892872B7E900AE2D54 /* DemoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DemoModel.xcdatamodel; sourceTree = "<group>"; };
+		1F7FD28B2872FFCA00AE2D54 /* UserListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTableViewController.swift; sourceTree = "<group>"; };
+		1F7FD28C2872FFCA00AE2D54 /* UserListTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListTableViewController.xib; sourceTree = "<group>"; };
+		1F7FD290287302E400AE2D54 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		1F7FD291287302E400AE2D54 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 		1F97496C2861ECBE00A414F1 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		1F97496E2863142300A414F1 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		1F9749702863143400A414F1 /* Profile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Profile.xib; sourceTree = "<group>"; };
@@ -69,7 +78,6 @@
 		1FFBE2292859F1ED00B4DA56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FFBE22B2859F1ED00B4DA56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FFBE2302859F1EE00B4DA56 /* Demo1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Demo1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FFBE2342859F1EE00B4DA56 /* Demo1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo1Tests.swift; sourceTree = "<group>"; };
 		1FFBE23A2859F1EE00B4DA56 /* Demo1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Demo1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FFBE23E2859F1EE00B4DA56 /* Demo1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo1UITests.swift; sourceTree = "<group>"; };
 		1FFBE2402859F1EE00B4DA56 /* Demo1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo1UITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -137,9 +145,14 @@
 				1F4AC6C9286054230032C57A /* SignUp.xib */,
 				1F97496C2861ECBE00A414F1 /* SignUp.swift */,
 				1F4AC6C8286054230032C57A /* SignUpViewController.swift */,
+				1F7FD28C2872FFCA00AE2D54 /* UserListTableViewController.xib */,
+				1F7FD28B2872FFCA00AE2D54 /* UserListTableViewController.swift */,
+				1F7FD291287302E400AE2D54 /* UserTableViewCell.xib */,
+				1F7FD290287302E400AE2D54 /* UserTableViewCell.swift */,
 				1F9749702863143400A414F1 /* Profile.xib */,
 				1F97496E2863142300A414F1 /* Profile.swift */,
 				1F9749722863147600A414F1 /* ProfileViewController.swift */,
+				1F7FD2882872B7E900AE2D54 /* DemoModel.xcdatamodeld */,
 				1FFBE2262859F1ED00B4DA56 /* Assets.xcassets */,
 				1FFBE22B2859F1ED00B4DA56 /* Info.plist */,
 			);
@@ -149,7 +162,6 @@
 		1FFBE2332859F1EE00B4DA56 /* Demo1Tests */ = {
 			isa = PBXGroup;
 			children = (
-				1FFBE2342859F1EE00B4DA56 /* Demo1Tests.swift */,
 			);
 			path = Demo1Tests;
 			sourceTree = "<group>";
@@ -271,8 +283,10 @@
 				1F97F393285CA2580047A41D /* versionItem.xib in Resources */,
 				1F4AC6CB286054230032C57A /* SignUp.xib in Resources */,
 				1FFBE22A2859F1ED00B4DA56 /* LaunchScreen.storyboard in Resources */,
+				1F7FD293287302E400AE2D54 /* UserTableViewCell.xib in Resources */,
 				1F97F38F285CA1480047A41D /* menuItem.xib in Resources */,
 				1F9749712863143400A414F1 /* Profile.xib in Resources */,
+				1F7FD28E2872FFCA00AE2D54 /* UserListTableViewController.xib in Resources */,
 				1FFBE2272859F1ED00B4DA56 /* Assets.xcassets in Resources */,
 				1FBB4E28285B26B80003A889 /* Main.storyboard in Resources */,
 			);
@@ -300,11 +314,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FFBE2222859F1EC00B4DA56 /* ViewController.swift in Sources */,
+				1F7FD292287302E400AE2D54 /* UserTableViewCell.swift in Sources */,
 				1F4AC6CA286054230032C57A /* SignUpViewController.swift in Sources */,
 				1F9749732863147600A414F1 /* ProfileViewController.swift in Sources */,
 				1FFBE21E2859F1EC00B4DA56 /* AppDelegate.swift in Sources */,
 				1FFBE2202859F1EC00B4DA56 /* SceneDelegate.swift in Sources */,
 				1F97F392285CA2580047A41D /* versionItem.swift in Sources */,
+				1F7FD28A2872B7E900AE2D54 /* DemoModel.xcdatamodeld in Sources */,
+				1F7FD28D2872FFCA00AE2D54 /* UserListTableViewController.swift in Sources */,
 				1F97496D2861ECBE00A414F1 /* SignUp.swift in Sources */,
 				1F97F38E285CA1480047A41D /* menuItem.swift in Sources */,
 				1F97496F2863142300A414F1 /* Profile.swift in Sources */,
@@ -316,7 +333,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FFBE2352859F1EE00B4DA56 /* Demo1Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +656,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1F7FD2882872B7E900AE2D54 /* DemoModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1F7FD2892872B7E900AE2D54 /* DemoModel.xcdatamodel */,
+			);
+			currentVersion = 1F7FD2892872B7E900AE2D54 /* DemoModel.xcdatamodel */;
+			path = DemoModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1FFBE2122859F1EC00B4DA56 /* Project object */;
 }

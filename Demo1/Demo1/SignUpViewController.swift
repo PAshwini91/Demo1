@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import CoreData
 
-class SignUpViewController: UIViewController, UITextFieldDelegate {
+class SignUpViewController: UIViewController, UITextFieldDelegate, OnClickDelegate, OnOffDelegate {
 
     var signUp = SignUp(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    var users: [NSManagedObject] = []
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -33,13 +35,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         signUp.txt_confirmPassword.tag = 5
         signUp.txt_confirmPassword.returnKeyType = .done
         
+        signUp.btn_signUp.tintColor = UIColor(hexaRGB: "#2D69B1")
+        signUp.btn_signUp.isEnabled = false
+        
+        signUp.onClickDelegate = self
+        signUp.OnOffDelegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        signUp.btn_signUp.tintColor = UIColor(hexaRGB: "#2D69B1")
         
         self.view.addSubview(signUp)
         
@@ -65,10 +69,107 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
+    func switchedOnOff() {
+        let switchStatus = signUp.sw_termsConditions.isOn
+        if switchStatus {
+            print("On")
+            signUp.btn_signUp.isEnabled = true
+        } else {
+            print("Off")
+            signUp.btn_signUp.isEnabled = false
+        }
+
+    }
+    
+    func onClick() {
+        
+//        guard let firstName = signUp.txt_firstName?.text else {
+//              return
+//          }
+        
+//        guard let lastName = signUp.txt_lastName?.text else {
+//              return
+//          }
+        
+//        guard let email = signUp.txt_email?.text else {
+//              return
+//          }
+        
+//        guard let password = signUp.txt_password?.text else {
+//              return
+//          }
+        
+        signUp.sw_termsConditions.setOn(false, animated: true)
+        
+//        self.save(fname: firstName, lname: lastName, email: email, password: password)
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        backItem.tintColor = UIColor(hexaRGB: "#2D69B1")
+        navigationItem.backBarButtonItem = backItem
+        
+        let userListVC = UserListTableViewController()
+        self.navigationController?.pushViewController(userListVC, animated: true)
+    }
+    
+    func save(fname: String, lname: String, email: String, password: String) {
+      
+//      guard let appDelegate =
+//        UIApplication.shared.delegate as? AppDelegate else {
+//        return
+//      }
+
+//      let managedContext =
+//        appDelegate.persistentContainer.viewContext
+
+        lazy var persistentContainer: NSPersistentContainer = {
+            let container = NSPersistentContainer(name: "DemoModel")
+            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+                if let error = error as NSError? {
+                    fatalError("Unresolved error \(error), \(error.userInfo)")
+                }
+            })
+            return container
+        }()
+        
+        let managedContext = persistentContainer.viewContext
+
+      let entity =
+        NSEntityDescription.entity(forEntityName: "Users",
+                                   in: managedContext)!
+      
+      let person = NSManagedObject(entity: entity,
+                                   insertInto: managedContext)
+
+      person.setValue(fname, forKeyPath: "firstName")
+        person.setValue(lname, forKeyPath: "lastName")
+        person.setValue(email, forKeyPath: "email")
+        person.setValue(password, forKeyPath: "password")
+      
+      do {
+          try managedContext.save()
+          users.append(person)
+          print("User details saved")
+          
+//          signUp.sw_termsConditions.isOn = false
+          
+          let backItem = UIBarButtonItem()
+          backItem.title = "Back"
+          backItem.tintColor = UIColor(hexaRGB: "#2D69B1")
+          navigationItem.backBarButtonItem = backItem
+          
+          let userListVC = UserListTableViewController()
+          self.navigationController?.pushViewController(userListVC, animated: true)
+          
+      } catch let error as NSError {
+          print("Could not save. \(error), \(error.userInfo)")
+      }
+    }
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         signUp.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: self.view.bounds.height)
     }
+    
 }
 
 extension UIColor {
