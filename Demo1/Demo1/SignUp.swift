@@ -21,6 +21,7 @@ class SignUp: UIView {
     @IBOutlet var sw_termsConditions: UISwitch!
     @IBOutlet var lbl_termsConditions: UILabel!
     @IBOutlet var btn_signUp: UIButton!
+    @IBOutlet var tv_errorMsg: UITextView!
     
 //    var switchStatus = Bool()
     var onClickDelegate: OnClickDelegate?
