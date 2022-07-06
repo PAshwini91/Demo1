@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="ipad9_7" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -24,11 +24,59 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="JXW-iV-dWf" secondAttribute="trailing" constant="10" id="7Mf-qH-PRb"/>
                     <constraint firstItem="JXW-iV-dWf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="NLw-Ff-cao"/>
+                    <constraint firstItem="JXW-iV-dWf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="SmR-n1-5ox"/>
+                    <constraint firstItem="JXW-iV-dWf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="WTp-zx-qXx"/>
+                    <constraint firstAttribute="bottom" secondItem="JXW-iV-dWf" secondAttribute="bottom" id="Y1B-Se-897"/>
+                    <constraint firstAttribute="trailing" secondItem="JXW-iV-dWf" secondAttribute="trailing" constant="10" id="bsT-JY-UIE"/>
                     <constraint firstItem="JXW-iV-dWf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="buT-6p-doX"/>
+                    <constraint firstItem="JXW-iV-dWf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gsj-ZL-Bw0"/>
+                    <constraint firstAttribute="bottom" secondItem="JXW-iV-dWf" secondAttribute="bottom" id="hbi-hE-Em7"/>
+                    <constraint firstItem="JXW-iV-dWf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="lqY-Z2-VBa"/>
                     <constraint firstAttribute="trailing" secondItem="JXW-iV-dWf" secondAttribute="trailing" constant="10" id="rxt-7K-K5l"/>
                     <constraint firstAttribute="bottom" secondItem="JXW-iV-dWf" secondAttribute="bottom" id="tbr-au-vSI"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="7Mf-qH-PRb"/>
+                        <exclude reference="NLw-Ff-cao"/>
+                        <exclude reference="SmR-n1-5ox"/>
+                        <exclude reference="WTp-zx-qXx"/>
+                        <exclude reference="Y1B-Se-897"/>
+                        <exclude reference="bsT-JY-UIE"/>
+                        <exclude reference="buT-6p-doX"/>
+                        <exclude reference="gsj-ZL-Bw0"/>
+                        <exclude reference="hbi-hE-Em7"/>
+                        <exclude reference="lqY-Z2-VBa"/>
+                        <exclude reference="rxt-7K-K5l"/>
+                        <exclude reference="tbr-au-vSI"/>
+                    </mask>
+                </variation>
+                <variation key="heightClass=compact">
+                    <mask key="constraints">
+                        <include reference="SmR-n1-5ox"/>
+                        <include reference="Y1B-Se-897"/>
+                        <include reference="bsT-JY-UIE"/>
+                        <include reference="gsj-ZL-Bw0"/>
+                    </mask>
+                </variation>
+                <variation key="heightClass=regular-widthClass=compact">
+                    <mask key="constraints">
+                        <include reference="NLw-Ff-cao"/>
+                        <include reference="buT-6p-doX"/>
+                        <include reference="rxt-7K-K5l"/>
+                        <include reference="tbr-au-vSI"/>
+                    </mask>
+                </variation>
+                <variation key="heightClass=regular-widthClass=regular">
+                    <mask key="constraints">
+                        <include reference="7Mf-qH-PRb"/>
+                        <include reference="WTp-zx-qXx"/>
+                        <include reference="hbi-hE-Em7"/>
+                        <include reference="lqY-Z2-VBa"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

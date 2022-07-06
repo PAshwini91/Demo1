@@ -15,8 +15,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
     var person = NSManagedObject()
     let selectedUserPosition = UserDefaults.standard.integer(forKey: "selectedPosition")
     
-//    var managedContext = NSManagedObjectContext()
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
