@@ -34,6 +34,7 @@ class Profile: UIView {
     @IBOutlet var lbl_country: UILabel!
     @IBOutlet var txt_country: UITextField!
     @IBOutlet var btn_save: UIButton!
+    @IBOutlet var lbl_errorMessage: UILabel!
     
     var onClickDelegate: OnClickDelegate?
     

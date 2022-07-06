@@ -21,42 +21,52 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
         profile.txt_firstName.delegate = self
         profile.txt_firstName.tag = 1
         profile.txt_firstName.returnKeyType = .next
+        profile.txt_firstName.autocorrectionType = .no
         
         profile.txt_lastName.delegate = self
         profile.txt_lastName.tag = 2
         profile.txt_lastName.returnKeyType = .next
+        profile.txt_lastName.autocorrectionType = .no
         
         profile.txt_companyName.delegate = self
         profile.txt_companyName.tag = 3
         profile.txt_companyName.returnKeyType = .next
+        profile.txt_companyName.autocorrectionType = .no
         
         profile.txt_mobileNumber.delegate = self
         profile.txt_mobileNumber.tag = 4
         profile.txt_mobileNumber.returnKeyType = .next
+        profile.txt_mobileNumber.autocorrectionType = .no
         
         profile.txt_address.delegate = self
         profile.txt_address.tag = 5
         profile.txt_address.returnKeyType = .next
+        profile.txt_address.autocorrectionType = .no
         
         profile.txt_addressSec.delegate = self
         profile.txt_addressSec.tag = 6
         profile.txt_addressSec.returnKeyType = .next
-        
-        profile.txt_city.delegate = self
-        profile.txt_city.tag = 7
-        profile.txt_city.returnKeyType = .next
+        profile.txt_addressSec.autocorrectionType = .no
         
         profile.txt_state.delegate = self
-        profile.txt_state.tag = 8
+        profile.txt_state.tag = 7
         profile.txt_state.returnKeyType = .next
+        profile.txt_state.autocorrectionType = .no
+        
+        profile.txt_city.delegate = self
+        profile.txt_city.tag = 8
+        profile.txt_city.returnKeyType = .next
+        profile.txt_city.autocorrectionType = .no
         
         profile.txt_zipcode.delegate = self
         profile.txt_zipcode.tag = 9
         profile.txt_zipcode.returnKeyType = .next
+        profile.txt_zipcode.autocorrectionType = .no
         
         profile.txt_country.delegate = self
         profile.txt_country.tag = 10
         profile.txt_country.returnKeyType = .done
+        profile.txt_country.autocorrectionType = .no
         
         view.addSubview(profile)
         
@@ -114,11 +124,135 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //Check if there is any other text-field in the view whose tag is +1 greater than the current text-field on which the return key was pressed. If yes → then move the cursor to that next text-field. If No → Dismiss the keyboard
-        if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-            nextField.becomeFirstResponder()
-        } else {
-            textField.resignFirstResponder()
+        switch textField.tag {
+        case 1:
+            if !textField.hasText {
+                profile.lbl_errorMessage.text = "Please enter a name."
+            } else {
+                profile.lbl_errorMessage.text = ""
+                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
+                    nextField.becomeFirstResponder()
+                } else {
+                    textField.resignFirstResponder()
+                }
+            }
+        case 2:
+            if !textField.hasText {
+                profile.lbl_errorMessage.text = "Please enter a last name."
+            } else {
+                profile.lbl_errorMessage.text = ""
+                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
+                    nextField.becomeFirstResponder()
+                } else {
+                    textField.resignFirstResponder()
+                }
+            }
+        case 3:
+            if !textField.hasText {
+                profile.lbl_errorMessage.text = "Please enter company name."
+            } else {
+                profile.lbl_errorMessage.text = ""
+                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
+                    nextField.becomeFirstResponder()
+                } else {
+                    textField.resignFirstResponder()
+                }
+            }
+        case 4:
+            if !textField.hasText {
+                profile.lbl_errorMessage.text = "Please enter a mobile number."
+            } else {
+                if isValidMobileNumber(textField.text!){
+                    profile.lbl_errorMessage.text = ""
+                    if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
+                        nextField.becomeFirstResponder()
+                    } else {
+                        textField.resignFirstResponder()
+                    }
+                } else {
+                    profile.lbl_errorMessage.text = "Please enter a valid mobile number."
+                }
+            }
+        case 5:
+            if !textField.hasText {
+                profile.lbl_errorMessage.text = "Please enter an address."
+            } else {
+                profile.lbl_errorMessage.text = ""
+                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
+                    nextField.becomeFirstResponder()
+                } else {
+                    textField.resignFirstResponder()
+                }
+            }
+        case 6:
+            if !textField.hasText {
+                profile.lbl_errorMessage.text = "Please enter a second address."
+            } else {
+                profile.lbl_errorMessage.text = ""
+                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
+                    nextField.becomeFirstResponder()
+                } else {
+                    textField.resignFirstResponder()
+                }
+            }
+        case 7:
+            if !textField.hasText {
+                profile.lbl_errorMessage.text = "Please mention a state."
+            } else {
+                profile.lbl_errorMessage.text = ""
+                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
+                    nextField.becomeFirstResponder()
+                } else {
+                    textField.resignFirstResponder()
+                }
+            }
+        case 8:
+            if !textField.hasText {
+                profile.lbl_errorMessage.text = "Please mention a city."
+            } else {
+                profile.lbl_errorMessage.text = ""
+                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
+                    nextField.becomeFirstResponder()
+                } else {
+                    textField.resignFirstResponder()
+                }
+            }
+        case 9:
+            if !textField.hasText {
+                profile.lbl_errorMessage.text = "Please mention a zipcode."
+            } else {
+                if isValidZipcode(textField.text!) {
+                    profile.lbl_errorMessage.text = ""
+                    if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
+                        nextField.becomeFirstResponder()
+                    } else {
+                        textField.resignFirstResponder()
+                    }
+                } else {
+                    profile.lbl_errorMessage.text = "Please enter a valid zipcode."
+                }
+                
+            }
+        case 10:
+            if !textField.hasText {
+                profile.lbl_errorMessage.text = "Please mention a country."
+            } else {
+                profile.lbl_errorMessage.text = ""
+                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
+                    nextField.becomeFirstResponder()
+                } else {
+                    textField.resignFirstResponder()
+                }
+            }
+        default:
+            profile.lbl_errorMessage.text = ""
+            if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
+                nextField.becomeFirstResponder()
+            } else {
+                textField.resignFirstResponder()
+            }
         }
+        
         return false
     }
     
@@ -155,6 +289,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
         
         let logOut = UIAlertAction(title: "Logout", style: .default) { (action) -> Void in
             print("Logout button tapped")
+//            let mainVC = self.navigationController?.viewControllers.first
+            self.navigationController?.popToRootViewController(animated: false)
         }
         
         let delete = UIAlertAction(title: "Delete Account", style: .destructive) { (action) -> Void in
@@ -228,6 +364,20 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
           }
+    }
+    
+    func isValidMobileNumber(_ mobileNumber: String) -> Bool {
+        let regEx = "^\\+(?:[0-9]?){6,14}[0-9]$"
+        
+        let mobileNumberCheck = NSPredicate(format: "SELF MATCHES[c] %@", regEx)
+        return mobileNumberCheck.evaluate(with: mobileNumber)
+    }
+    
+    func isValidZipcode(_ zipcode: String) -> Bool {
+        let regEx = "^[0-9]{6}$" // for Indian postal codes
+        
+        let mobileNumberCheck = NSPredicate(format: "SELF MATCHES[c] %@", regEx)
+        return mobileNumberCheck.evaluate(with: zipcode)
     }
     
     override func viewWillLayoutSubviews() {

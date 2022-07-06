@@ -157,35 +157,35 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, OnClickDelega
     
     func onClick() {
         
-        guard let firstName = signUp.txt_firstName?.text, firstName != "" else {
-              return
-          }
-
-        guard let lastName = signUp.txt_lastName?.text, lastName != "" else {
-              return
-          }
-
-        guard let email = signUp.txt_email?.text, email != "" else {
-              return
-          }
-
-        guard let password = signUp.txt_password?.text, password != "" else {
-              return
-          }
-
-        guard let confirm_password = signUp.txt_confirmPassword?.text, confirm_password != "" else {
-              return
-          }
-
-        let alert = UIAlertController(title: "", message: "Are you sure?" , preferredStyle: .alert)
-
-        let yes = UIAlertAction(title: "YES", style: .default) { (action) -> Void in
-            self.save(fname: firstName, lname: lastName, email: email, password: password)
-            print("YES button tapped")
-        }
-        alert.addAction(yes)
-        self.present(alert, animated: true, completion: nil)
-        
+//        guard let firstName = signUp.txt_firstName?.text, firstName != "" else {
+//              return
+//          }
+//
+//        guard let lastName = signUp.txt_lastName?.text, lastName != "" else {
+//              return
+//          }
+//
+//        guard let email = signUp.txt_email?.text, email != "" else {
+//              return
+//          }
+//
+//        guard let password = signUp.txt_password?.text, password != "" else {
+//              return
+//          }
+//
+//        guard let confirm_password = signUp.txt_confirmPassword?.text, confirm_password != "" else {
+//              return
+//          }
+//
+//        let alert = UIAlertController(title: "", message: "Are you sure?" , preferredStyle: .alert)
+//
+//        let yes = UIAlertAction(title: "YES", style: .default) { (action) -> Void in
+//            self.save(fname: firstName, lname: lastName, email: email, password: password)
+//            print("YES button tapped")
+//        }
+//        alert.addAction(yes)
+//        self.present(alert, animated: true, completion: nil)
+//
         signUp.sw_termsConditions.setOn(false, animated: false)
         
         let backItem = UIBarButtonItem()
@@ -193,8 +193,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, OnClickDelega
         backItem.tintColor = UIColor(hexaRGB: "#2D69B1")
         navigationItem.backBarButtonItem = backItem
 //
-//        let userListVC = UserListTableViewController()
-//        self.navigationController?.pushViewController(userListVC, animated: true)
+        let userListVC = UserListTableViewController()
+        self.navigationController?.pushViewController(userListVC, animated: true)
     }
     
     func save(fname: String, lname: String, email: String, password: String) {
