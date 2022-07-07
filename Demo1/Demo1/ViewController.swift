@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var isSeen = false
     var homePage = HomePage(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-    let menuItemDetails = [menu(imageName: "homekit", title: "Home"), menu(imageName: "clock", title: "Log History"), menu(imageName: "info.circle", title: "Information"), menu(imageName: "questionmark.circle", title: "Registration"), menu(imageName: "arrow.right.circle", title: "Log Out"), menu(imageName: "person.crop.circle", title: "Profile Page")]
+    let menuItemDetails = [menu(imageName: "homekit", title: "Home"), menu(imageName: "clock", title: "Log History"), menu(imageName: "info.circle", title: "Information"), menu(imageName: "questionmark.circle", title: "Registration"), menu(imageName: "arrow.right.circle", title: "Log Out"), menu(imageName: "person.crop.circle", title: "Profile Page"), menu(imageName: "person.2.circle", title: "Users") ]
     let backItem = UIBarButtonItem()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -134,7 +134,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         switch menuItemDetails[indexPath.row].title {
         case "Registration" :
-            backItem.title = "Back"
+            backItem.title = "Hanna Lab"
             backItem.tintColor = UIColor(hexaRGB: "#2D69B1")
             navigationItem.backBarButtonItem = backItem
             
@@ -151,6 +151,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let Storyboard = UIStoryboard(name: "Main", bundle: nil)
             let profileVC = Storyboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
             self.navigationController?.pushViewController(profileVC, animated: true)
+            break
+            
+        case "Users":
+            backItem.title = "Hanna Lab"
+            backItem.tintColor = UIColor(hexaRGB: "#2D69B1")
+            navigationItem.backBarButtonItem = backItem
+            
+//            let Storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let profileVC = Storyboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
+            self.navigationController?.pushViewController(UserListTableViewController(), animated: true)
             break
         default:
             print("not found")

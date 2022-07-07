@@ -14,6 +14,8 @@
 		1F7FD28E2872FFCA00AE2D54 /* UserListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7FD28C2872FFCA00AE2D54 /* UserListTableViewController.xib */; };
 		1F7FD292287302E400AE2D54 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FD290287302E400AE2D54 /* UserTableViewCell.swift */; };
 		1F7FD293287302E400AE2D54 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7FD291287302E400AE2D54 /* UserTableViewCell.xib */; };
+		1F80B9D12877025B00E67B7C /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F80B9CF2877025B00E67B7C /* ResetPasswordViewController.swift */; };
+		1F80B9D22877025B00E67B7C /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F80B9D02877025B00E67B7C /* ResetPasswordViewController.xib */; };
 		1F97496D2861ECBE00A414F1 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97496C2861ECBE00A414F1 /* SignUp.swift */; };
 		1F97496F2863142300A414F1 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97496E2863142300A414F1 /* Profile.swift */; };
 		1F9749712863143400A414F1 /* Profile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F9749702863143400A414F1 /* Profile.xib */; };
@@ -59,6 +61,8 @@
 		1F7FD28C2872FFCA00AE2D54 /* UserListTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListTableViewController.xib; sourceTree = "<group>"; };
 		1F7FD290287302E400AE2D54 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		1F7FD291287302E400AE2D54 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
+		1F80B9CF2877025B00E67B7C /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		1F80B9D02877025B00E67B7C /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
 		1F97496C2861ECBE00A414F1 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		1F97496E2863142300A414F1 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		1F9749702863143400A414F1 /* Profile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Profile.xib; sourceTree = "<group>"; };
@@ -145,13 +149,15 @@
 				1F4AC6C9286054230032C57A /* SignUp.xib */,
 				1F97496C2861ECBE00A414F1 /* SignUp.swift */,
 				1F4AC6C8286054230032C57A /* SignUpViewController.swift */,
+				1F9749702863143400A414F1 /* Profile.xib */,
+				1F97496E2863142300A414F1 /* Profile.swift */,
+				1F9749722863147600A414F1 /* ProfileViewController.swift */,
 				1F7FD28C2872FFCA00AE2D54 /* UserListTableViewController.xib */,
 				1F7FD28B2872FFCA00AE2D54 /* UserListTableViewController.swift */,
 				1F7FD291287302E400AE2D54 /* UserTableViewCell.xib */,
 				1F7FD290287302E400AE2D54 /* UserTableViewCell.swift */,
-				1F9749702863143400A414F1 /* Profile.xib */,
-				1F97496E2863142300A414F1 /* Profile.swift */,
-				1F9749722863147600A414F1 /* ProfileViewController.swift */,
+				1F80B9D02877025B00E67B7C /* ResetPasswordViewController.xib */,
+				1F80B9CF2877025B00E67B7C /* ResetPasswordViewController.swift */,
 				1F7FD2882872B7E900AE2D54 /* DemoModel.xcdatamodeld */,
 				1FFBE2262859F1ED00B4DA56 /* Assets.xcassets */,
 				1FFBE22B2859F1ED00B4DA56 /* Info.plist */,
@@ -280,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FBB4E26285B1C970003A889 /* HomePage.xib in Resources */,
+				1F80B9D22877025B00E67B7C /* ResetPasswordViewController.xib in Resources */,
 				1F97F393285CA2580047A41D /* versionItem.xib in Resources */,
 				1F4AC6CB286054230032C57A /* SignUp.xib in Resources */,
 				1FFBE22A2859F1ED00B4DA56 /* LaunchScreen.storyboard in Resources */,
@@ -326,6 +333,7 @@
 				1F97F38E285CA1480047A41D /* menuItem.swift in Sources */,
 				1F97496F2863142300A414F1 /* Profile.swift in Sources */,
 				1FBB4E24285B1C030003A889 /* HomePage.swift in Sources */,
+				1F80B9D12877025B00E67B7C /* ResetPasswordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

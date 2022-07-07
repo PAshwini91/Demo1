@@ -16,6 +16,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, OnClickDelega
     
     override func viewWillAppear(_ animated: Bool) {
         
+        navigationItem.title = "Registration"
+        
         signUp.txt_firstName.delegate = self
         signUp.txt_firstName.tag = 1
         signUp.txt_firstName.returnKeyType = .next
@@ -46,6 +48,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, OnClickDelega
         
         signUp.onClickDelegate = self
         signUp.OnOffDelegate = self
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        backItem.tintColor = UIColor(hexaRGB: "#2D69B1")
+        navigationItem.backBarButtonItem = backItem
+        
     }
     
     override func viewDidLoad() {
@@ -63,77 +71,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, OnClickDelega
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //Check if there is any other text-field in the view whose tag is +1 greater than the current text-field on which the return key was pressed. If yes → then move the cursor to that next text-field. If No → Dismiss the keyboard
-        switch textField.tag {
-        case 1:
-            if !textField.hasText {
-                signUp.tv_errorMsg.text = "Please enter a name."
-            } else {
-                signUp.tv_errorMsg.text = ""
-                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-                    nextField.becomeFirstResponder()
-                } else {
-                    textField.resignFirstResponder()
-                }
-            }
-        case 2:
-            if !textField.hasText {
-                signUp.tv_errorMsg.text = "Please enter a last name."
-            } else {
-                signUp.tv_errorMsg.text = ""
-                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-                    nextField.becomeFirstResponder()
-                } else {
-                    textField.resignFirstResponder()
-                }
-            }
-        case 3:
-            if !textField.hasText {
-                signUp.tv_errorMsg.text = "Please enter an email address."
-            } else {
-                if isValidEmail(textField.text!) {
-                    signUp.tv_errorMsg.text = ""
-                    if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-                        nextField.becomeFirstResponder()
-                    } else {
-                        textField.resignFirstResponder()
-                    }
-                } else {
-                    signUp.tv_errorMsg.text = "Please enter a valid email address."
-                }
-            }
-        case 4:
-            if !textField.hasText {
-                signUp.tv_errorMsg.text = "Please enter a password."
-            } else {
-                signUp.tv_errorMsg.text = ""
-                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-                    nextField.becomeFirstResponder()
-                } else {
-                    textField.resignFirstResponder()
-                }
-            }
-        case 5:
-            if !textField.hasText {
-                signUp.tv_errorMsg.text = "Please confirm password."
-            } else {
-                if textField.text != signUp.txt_password.text {
-                    signUp.tv_errorMsg.text = "Passwords don't match."
-                } else {
-                    signUp.tv_errorMsg.text = ""
-                    if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-                        nextField.becomeFirstResponder()
-                    } else {
-                        textField.resignFirstResponder()
-                    }
-                }
-            }
-        default:
-            signUp.tv_errorMsg.text = ""
-            if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-                nextField.becomeFirstResponder()
-            } else {
-                textField.resignFirstResponder()
-            }
+        if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
         }
         
         return false
@@ -156,45 +97,55 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, OnClickDelega
     }
     
     func onClick() {
+        signUp.tv_errorMsg.text = ""
         
-        guard let firstName = signUp.txt_firstName?.text, firstName != "" else {
-              return
-          }
-
-        guard let lastName = signUp.txt_lastName?.text, lastName != "" else {
-              return
-          }
-
-        guard let email = signUp.txt_email?.text, email != "" else {
-              return
-          }
-
-        guard let password = signUp.txt_password?.text, password != "" else {
-              return
-          }
-
-        guard let confirm_password = signUp.txt_confirmPassword?.text, confirm_password != "" else {
-              return
-          }
-
-        let alert = UIAlertController(title: "", message: "Are you sure?" , preferredStyle: .alert)
-
-        let yes = UIAlertAction(title: "YES", style: .default) { (action) -> Void in
-            self.save(fname: firstName, lname: lastName, email: email, password: password)
-            print("YES button tapped")
-        }
-        alert.addAction(yes)
-        self.present(alert, animated: true, completion: nil)
+//        guard let firstName = signUp.txt_firstName?.text, firstName != "" else {
+//            signUp.tv_errorMsg.text = "Please enter a name."
+//              return
+//          }
 //
-        signUp.sw_termsConditions.setOn(false, animated: false)
+//        guard let lastName = signUp.txt_lastName?.text, lastName != "" else {
+//            signUp.tv_errorMsg.text = "Please enter a last name."
+//              return
+//          }
+//
+//        guard let email = signUp.txt_email?.text, email != "" else {
+//            signUp.tv_errorMsg.text = "Please enter an email address."
+//              return
+//          }
+//
+//        guard let password = signUp.txt_password?.text, password != "" else {
+//            signUp.tv_errorMsg.text = "Please enter a password."
+//              return
+//          }
+//
+//        guard let confirm_password = signUp.txt_confirmPassword?.text, confirm_password != "" else {
+//            signUp.tv_errorMsg.text = "Please confirm your password."
+//              return
+//          }
+//
+//        if !isValidEmail(email) {
+//            signUp.tv_errorMsg.text = "Please enter a valid email address. "
+//        }
+//
+//        if !password.elementsEqual(confirm_password) {
+//            signUp.tv_errorMsg.text = signUp.tv_errorMsg.text + "Passwords don't match."
+//        }
+//
+//        if !signUp.tv_errorMsg.hasText {
+//            let alert = UIAlertController(title: "", message: "Are you sure?" , preferredStyle: .alert)
+//
+//            let yes = UIAlertAction(title: "YES", style: .default) { (action) -> Void in
+//                self.save(fname: firstName, lname: lastName, email: email, password: password)
+//                self.signUp.sw_termsConditions.setOn(false, animated: false)
+//                print("YES button tapped")
+//            }
+//            alert.addAction(yes)
+//            self.present(alert, animated: true, completion: nil)
+//        }
         
-        let backItem = UIBarButtonItem()
-        backItem.title = "Back"
-        backItem.tintColor = UIColor(hexaRGB: "#2D69B1")
-        navigationItem.backBarButtonItem = backItem
-//
-//        let userListVC = UserListTableViewController()
-//        self.navigationController?.pushViewController(userListVC, animated: true)
+        let userListVC = UserListTableViewController()
+        self.navigationController?.pushViewController(userListVC, animated: true)
     }
     
     func save(fname: String, lname: String, email: String, password: String) {
@@ -233,11 +184,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, OnClickDelega
           users.append(person)
           print("User details saved")
           signUp.tv_errorMsg.text = ""
-          
-//          let backItem = UIBarButtonItem()
-//          backItem.title = "Back"
-//          backItem.tintColor = UIColor(hexaRGB: "#2D69B1")
-//          navigationItem.backBarButtonItem = backItem
           
           let userListVC = UserListTableViewController()
           self.navigationController?.pushViewController(userListVC, animated: true)

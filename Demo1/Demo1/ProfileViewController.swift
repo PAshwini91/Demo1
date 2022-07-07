@@ -70,13 +70,13 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
         
         view.addSubview(profile)
         
+        navigationItem.title = "Profile"
         let settingsItem = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(settingsButtonTapped(_:)))
         navigationItem.rightBarButtonItem = settingsItem
         navigationItem.rightBarButtonItem?.image = UIImage(systemName: "gear")
         navigationItem.rightBarButtonItem?.tintColor = UIColor(hexaRGB: "#2D69B1")
-      
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -124,133 +124,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //Check if there is any other text-field in the view whose tag is +1 greater than the current text-field on which the return key was pressed. If yes → then move the cursor to that next text-field. If No → Dismiss the keyboard
-        switch textField.tag {
-        case 1:
-            if !textField.hasText {
-                profile.lbl_errorMessage.text = "Please enter a name."
-            } else {
-                profile.lbl_errorMessage.text = ""
-                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-                    nextField.becomeFirstResponder()
-                } else {
-                    textField.resignFirstResponder()
-                }
-            }
-        case 2:
-            if !textField.hasText {
-                profile.lbl_errorMessage.text = "Please enter a last name."
-            } else {
-                profile.lbl_errorMessage.text = ""
-                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-                    nextField.becomeFirstResponder()
-                } else {
-                    textField.resignFirstResponder()
-                }
-            }
-        case 3:
-            if !textField.hasText {
-                profile.lbl_errorMessage.text = "Please enter company name."
-            } else {
-                profile.lbl_errorMessage.text = ""
-                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-                    nextField.becomeFirstResponder()
-                } else {
-                    textField.resignFirstResponder()
-                }
-            }
-        case 4:
-            if !textField.hasText {
-                profile.lbl_errorMessage.text = "Please enter a mobile number."
-            } else {
-                if isValidMobileNumber(textField.text!){
-                    profile.lbl_errorMessage.text = ""
-                    if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-                        nextField.becomeFirstResponder()
-                    } else {
-                        textField.resignFirstResponder()
-                    }
-                } else {
-                    profile.lbl_errorMessage.text = "Please enter a valid mobile number."
-                }
-            }
-        case 5:
-            if !textField.hasText {
-                profile.lbl_errorMessage.text = "Please enter an address."
-            } else {
-                profile.lbl_errorMessage.text = ""
-                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-                    nextField.becomeFirstResponder()
-                } else {
-                    textField.resignFirstResponder()
-                }
-            }
-        case 6:
-            if !textField.hasText {
-                profile.lbl_errorMessage.text = "Please enter a second address."
-            } else {
-                profile.lbl_errorMessage.text = ""
-                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-                    nextField.becomeFirstResponder()
-                } else {
-                    textField.resignFirstResponder()
-                }
-            }
-        case 7:
-            if !textField.hasText {
-                profile.lbl_errorMessage.text = "Please mention a state."
-            } else {
-                profile.lbl_errorMessage.text = ""
-                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-                    nextField.becomeFirstResponder()
-                } else {
-                    textField.resignFirstResponder()
-                }
-            }
-        case 8:
-            if !textField.hasText {
-                profile.lbl_errorMessage.text = "Please mention a city."
-            } else {
-                profile.lbl_errorMessage.text = ""
-                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-                    nextField.becomeFirstResponder()
-                } else {
-                    textField.resignFirstResponder()
-                }
-            }
-        case 9:
-            if !textField.hasText {
-                profile.lbl_errorMessage.text = "Please mention a zipcode."
-            } else {
-                if isValidZipcode(textField.text!) {
-                    profile.lbl_errorMessage.text = ""
-                    if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-                        nextField.becomeFirstResponder()
-                    } else {
-                        textField.resignFirstResponder()
-                    }
-                } else {
-                    profile.lbl_errorMessage.text = "Please enter a valid zipcode."
-                }
-                
-            }
-        case 10:
-            if !textField.hasText {
-                profile.lbl_errorMessage.text = "Please mention a country."
-            } else {
-                profile.lbl_errorMessage.text = ""
-                if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-                    nextField.becomeFirstResponder()
-                } else {
-                    textField.resignFirstResponder()
-                }
-            }
-        default:
-            profile.lbl_errorMessage.text = ""
-            if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
-                nextField.becomeFirstResponder()
-            } else {
-                textField.resignFirstResponder()
-            }
+        if let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
         }
         
         return false
@@ -261,23 +138,84 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
     }
     
     func onClick() {
-        let confirmationAlert = UIAlertController(title: "Confirmation", message: "Are you sure you want to update details?" , preferredStyle: .alert)
         
-        let ok = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
-            print("OK button tapped")
-            self.saveChanges()
-        }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
-            print("Cancel button tapped")
+        profile.lbl_errorMessage.text = ""
+        
+        guard let firstName = profile.txt_firstName?.text, firstName != "" else {
+            profile.lbl_errorMessage.text = "Please enter a name."
+            return
         }
         
-        confirmationAlert.addAction(ok)
-        confirmationAlert.addAction(cancel)
-        self.present(confirmationAlert, animated: true, completion: nil)
+        guard let lastName = profile.txt_lastName?.text, lastName != "" else {
+            profile.lbl_errorMessage.text = "Please enter a last name."
+            return
+        }
+        guard let company = profile.txt_companyName?.text, company != "" else {
+            profile.lbl_errorMessage.text = "Please enter company name."
+            return
+        }
         
-//        let Storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let homeVC = Storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
-//        self.present(homeVC, animated: true)
+        guard let mobile = profile.txt_lastName?.text, mobile != "" else {
+            profile.lbl_errorMessage.text = "Please enter a mobile number."
+            return
+        }
+        guard let address = profile.txt_address?.text, address != "" else {
+            profile.lbl_errorMessage.text = "Please enter an address."
+            return
+        }
+        
+        guard let addressSec = profile.txt_addressSec?.text, addressSec != "" else {
+            profile.lbl_errorMessage.text = "Please enter a second address."
+            return
+        }
+        guard let state = profile.txt_state?.text, state != "" else {
+            profile.lbl_errorMessage.text = "Please mention a state."
+            return
+        }
+        
+        guard let city = profile.txt_city?.text, city != "" else {
+            profile.lbl_errorMessage.text = "Please mention a city."
+            return
+        }
+        guard let zipcode = profile.txt_zipcode?.text, zipcode != "" else {
+            profile.lbl_errorMessage.text = "Please mention a zipcode."
+            return
+        }
+        
+        guard let country = profile.txt_country?.text, country != "" else {
+            profile.lbl_errorMessage.text = "Please mention a country."
+            return
+        }
+        
+        if !isValidMobileNumber(mobile) {
+            profile.lbl_errorMessage.text = "Please enter a valid mobile number. "
+        }
+        
+        if !isValidZipcode(zipcode) {
+            profile.lbl_errorMessage.text = profile.lbl_errorMessage.text! + "Please enter a valid zipcode. "
+        }
+        
+        if profile.lbl_errorMessage.text == "" {
+            let confirmationAlert = UIAlertController(title: "Confirmation", message: "Are you sure you want to update details?" , preferredStyle: .alert)
+            
+            let ok = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
+                print("OK button tapped")
+                self.saveChanges()
+            }
+            
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+                print("Cancel button tapped")
+            }
+            
+            confirmationAlert.addAction(ok)
+            confirmationAlert.addAction(cancel)
+            
+            self.present(confirmationAlert, animated: true, completion: nil)
+        }
+        
+        //        let Storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //        let homeVC = Storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
+        //        self.present(homeVC, animated: true)
     }
     
     @objc func settingsButtonTapped(_ sender: UIBarButtonItem) {
@@ -285,16 +223,56 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
         
         let resetPassword = UIAlertAction(title: "Reset Password", style: .default) { (action) -> Void in
             print("Reset Password button tapped")
+            
+            let backItem = UIBarButtonItem()
+            backItem.title = "Back"
+            backItem.tintColor = UIColor(hexaRGB: "#2D69B1")
+            self.navigationItem.backBarButtonItem = backItem
+            self.navigationController?.pushViewController(ResetPasswordViewController(), animated: true)
         }
         
         let logOut = UIAlertAction(title: "Logout", style: .default) { (action) -> Void in
             print("Logout button tapped")
-//            let mainVC = self.navigationController?.viewControllers.first
             self.navigationController?.popToRootViewController(animated: false)
         }
         
         let delete = UIAlertAction(title: "Delete Account", style: .destructive) { (action) -> Void in
             print("Delete Account button tapped")
+            let alert = UIAlertController(title: "", message: "Are you sure?", preferredStyle: .alert)
+            
+            let yes = UIAlertAction(title: "Yes", style: .default) { (action) -> Void in
+                
+                lazy var persistentContainer: NSPersistentContainer = {
+                    let container = NSPersistentContainer(name: "DemoModel")
+                    container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+                        if let error = error as NSError? {
+                            fatalError("Unresolved error \(error), \(error.userInfo)")
+                        }
+                    })
+                    return container
+                }()
+                
+                let managedContext = persistentContainer.viewContext
+                let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Users")
+                do {
+                    self.users = try managedContext.fetch(fetchRequest)
+                    managedContext.delete(self.users[self.selectedUserPosition] as NSManagedObject)
+                    self.users.remove(at: self.selectedUserPosition)
+                    try managedContext.save()
+                    self.navigationController?.popViewController(animated: true)
+                } catch let error as NSError {
+                    print("Could not save changes. \(error), \(error.userInfo)")
+                }
+                
+            }
+            
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+            
+            alert.addAction(yes)
+            alert.addAction(cancel)
+            
+            self.present(alert, animated: true, completion: nil)
+            
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
@@ -309,7 +287,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
         if let popoverController = dialogMessage.popoverPresentationController {
             popoverController.barButtonItem = navigationItem.rightBarButtonItem//to set the source of your alert
             popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0) // you can set this as per your requirement.
-//            popoverController.permittedArrowDirections = [] //to hide the arrow of any particular direction
+            //            popoverController.permittedArrowDirections = [] //to hide the arrow of any particular direction
         }
         
         self.present(dialogMessage, animated: true, completion: nil)
@@ -363,7 +341,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
             try managedContext.save()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
-          }
+        }
     }
     
     func isValidMobileNumber(_ mobileNumber: String) -> Bool {
@@ -384,5 +362,5 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
         super.viewWillLayoutSubviews()
         profile.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: self.view.bounds.height)
     }
-
+    
 }

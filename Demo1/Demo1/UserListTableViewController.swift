@@ -15,6 +15,13 @@ class UserListTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        backItem.tintColor = UIColor(hexaRGB: "#2D69B1")
+        navigationItem.backBarButtonItem = backItem
+        
+        navigationItem.title = "Users"
+        
         lazy var persistentContainer: NSPersistentContainer = {
             let container = NSPersistentContainer(name: "DemoModel")
             container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -32,17 +39,12 @@ class UserListTableViewController: UITableViewController {
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
+        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let addUser = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(addUserTapped(_:)))
-//        navigationItem.rightBarButtonItem = addUser
-//        navigationItem.rightBarButtonItem?.image = UIImage(systemName: "person.fill.badge.plus")
-//        navigationItem.rightBarButtonItem?.tintColor = UIColor(hexaRGB: "#2D69B1")
-        
-        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -78,11 +80,6 @@ class UserListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         UserDefaults.standard.set(indexPath.row, forKey: "selectedPosition")
-        
-        let backItem = UIBarButtonItem()
-        backItem.title = "Back"
-        backItem.tintColor = UIColor(hexaRGB: "#2D69B1")
-        navigationItem.backBarButtonItem = backItem
         
         let userProfileVC = ProfileViewController()
         self.navigationController?.pushViewController(userProfileVC, animated: true)
