@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
     var users: [NSManagedObject] = []
     var person = NSManagedObject()
     let selectedUserPosition = UserDefaults.standard.integer(forKey: "selectedPosition")
+    let dataModel = persistentDataADC()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -82,22 +83,23 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
         
         profile.onClickDelegate = self
         
-        lazy var persistentContainer: NSPersistentContainer = {
-            let container = NSPersistentContainer(name: "DemoModel")
-            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-                if let error = error as NSError? {
-                    fatalError("Unresolved error \(error), \(error.userInfo)")
-                }
-            })
-            return container
-        }()
-        let managedContext = persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Users")
-        do {
-            users = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
+//        lazy var persistentContainer: NSPersistentContainer = {
+//            let container = NSPersistentContainer(name: "DemoModel")
+//            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+//                if let error = error as NSError? {
+//                    fatalError("Unresolved error \(error), \(error.userInfo)")
+//                }
+//            })
+//            return container
+//        }()
+//        let managedContext = persistentContainer.viewContext
+//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Users")
+//        do {
+//            users = try managedContext.fetch(fetchRequest)
+//        } catch let error as NSError {
+//            print("Could not fetch. \(error), \(error.userInfo)")
+//        }
+        users = dataModel.fetchData(entityName: "Users")
         person = users[selectedUserPosition]
         
         profile.txt_firstName.text = person.value(forKey: "firstName") as? String
@@ -155,7 +157,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
             return
         }
         
-        guard let mobile = profile.txt_lastName?.text, mobile != "" else {
+        guard let mobile = profile.txt_mobileNumber?.text, mobile != "" else {
             profile.lbl_errorMessage.text = "Please enter a mobile number."
             return
         }
@@ -198,8 +200,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
         if profile.lbl_errorMessage.text == "" {
             let confirmationAlert = UIAlertController(title: "Confirmation", message: "Are you sure you want to update details?" , preferredStyle: .alert)
             
-            let ok = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
-                print("OK button tapped")
+            let yes = UIAlertAction(title: "Yes", style: .default) { (action) -> Void in
+                print("Yes button tapped")
                 self.saveChanges()
             }
             
@@ -207,7 +209,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
                 print("Cancel button tapped")
             }
             
-            confirmationAlert.addAction(ok)
+            confirmationAlert.addAction(yes)
             confirmationAlert.addAction(cancel)
             
             self.present(confirmationAlert, animated: true, completion: nil)
@@ -242,28 +244,30 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
             
             let yes = UIAlertAction(title: "Yes", style: .default) { (action) -> Void in
                 
-                lazy var persistentContainer: NSPersistentContainer = {
-                    let container = NSPersistentContainer(name: "DemoModel")
-                    container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-                        if let error = error as NSError? {
-                            fatalError("Unresolved error \(error), \(error.userInfo)")
-                        }
-                    })
-                    return container
-                }()
+//                lazy var persistentContainer: NSPersistentContainer = {
+//                    let container = NSPersistentContainer(name: "DemoModel")
+//                    container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+//                        if let error = error as NSError? {
+//                            fatalError("Unresolved error \(error), \(error.userInfo)")
+//                        }
+//                    })
+//                    return container
+//                }()
+//
+//                let managedContext = persistentContainer.viewContext
+//                let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Users")
+//                do {
+//                    self.users = try managedContext.fetch(fetchRequest)
+//                    managedContext.delete(self.users[self.selectedUserPosition] as NSManagedObject)
+//                    self.users.remove(at: self.selectedUserPosition)
+//                    try managedContext.save()
+//                    self.navigationController?.popViewController(animated: true)
+//                } catch let error as NSError {
+//                    print("Could not save changes. \(error), \(error.userInfo)")
+//                }
                 
-                let managedContext = persistentContainer.viewContext
-                let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Users")
-                do {
-                    self.users = try managedContext.fetch(fetchRequest)
-                    managedContext.delete(self.users[self.selectedUserPosition] as NSManagedObject)
-                    self.users.remove(at: self.selectedUserPosition)
-                    try managedContext.save()
-                    self.navigationController?.popViewController(animated: true)
-                } catch let error as NSError {
-                    print("Could not save changes. \(error), \(error.userInfo)")
-                }
-                
+                self.dataModel.deleteData(entityName: "Users", position: self.selectedUserPosition)
+                self.navigationController?.popViewController(animated: true)
             }
             
             let cancel = UIAlertAction(title: "Cancel", style: .cancel)
@@ -295,23 +299,25 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
     
     func saveChanges() {
         
-        lazy var persistentContainer: NSPersistentContainer = {
-            let container = NSPersistentContainer(name: "DemoModel")
-            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-                if let error = error as NSError? {
-                    fatalError("Unresolved error \(error), \(error.userInfo)")
-                }
-            })
-            return container
-        }()
+//        lazy var persistentContainer: NSPersistentContainer = {
+//            let container = NSPersistentContainer(name: "DemoModel")
+//            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+//                if let error = error as NSError? {
+//                    fatalError("Unresolved error \(error), \(error.userInfo)")
+//                }
+//            })
+//            return container
+//        }()
+//
+//        let managedContext = persistentContainer.viewContext
+//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Users")
+//        do {
+//            users = try managedContext.fetch(fetchRequest)
+//        } catch let error as NSError {
+//            print("Could not fetch. \(error), \(error.userInfo)")
+//        }
         
-        let managedContext = persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Users")
-        do {
-            users = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
+        users = dataModel.fetchData(entityName: "Users")
         
         self.person = users[selectedUserPosition]
         
@@ -337,11 +343,12 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
         self.person.setValue(zipcode, forKey: "zipcode")
         self.person.setValue(country, forKey: "country")
         
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
+        dataModel.updateData()
+//        do {
+//            try managedContext.save()
+//        } catch let error as NSError {
+//            print("Could not save. \(error), \(error.userInfo)")
+//        }
     }
     
     func isValidMobileNumber(_ mobileNumber: String) -> Bool {

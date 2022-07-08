@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F4AC6CA286054230032C57A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AC6C8286054230032C57A /* SignUpViewController.swift */; };
 		1F4AC6CB286054230032C57A /* SignUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4AC6C9286054230032C57A /* SignUp.xib */; };
+		1F7CE30C28784A7A00661044 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7CE30B28784A7A00661044 /* DataModel.swift */; };
 		1F7FD28A2872B7E900AE2D54 /* DemoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FD2882872B7E900AE2D54 /* DemoModel.xcdatamodeld */; };
 		1F7FD28D2872FFCA00AE2D54 /* UserListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FD28B2872FFCA00AE2D54 /* UserListTableViewController.swift */; };
 		1F7FD28E2872FFCA00AE2D54 /* UserListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7FD28C2872FFCA00AE2D54 /* UserListTableViewController.xib */; };
@@ -56,6 +57,7 @@
 /* Begin PBXFileReference section */
 		1F4AC6C8286054230032C57A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1F4AC6C9286054230032C57A /* SignUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUp.xib; sourceTree = "<group>"; };
+		1F7CE30B28784A7A00661044 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		1F7FD2892872B7E900AE2D54 /* DemoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DemoModel.xcdatamodel; sourceTree = "<group>"; };
 		1F7FD28B2872FFCA00AE2D54 /* UserListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTableViewController.swift; sourceTree = "<group>"; };
 		1F7FD28C2872FFCA00AE2D54 /* UserListTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListTableViewController.xib; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				1F7FD290287302E400AE2D54 /* UserTableViewCell.swift */,
 				1F80B9D02877025B00E67B7C /* ResetPasswordViewController.xib */,
 				1F80B9CF2877025B00E67B7C /* ResetPasswordViewController.swift */,
+				1F7CE30B28784A7A00661044 /* DataModel.swift */,
 				1F7FD2882872B7E900AE2D54 /* DemoModel.xcdatamodeld */,
 				1FFBE2262859F1ED00B4DA56 /* Assets.xcassets */,
 				1FFBE22B2859F1ED00B4DA56 /* Info.plist */,
@@ -325,6 +328,7 @@
 				1F4AC6CA286054230032C57A /* SignUpViewController.swift in Sources */,
 				1F9749732863147600A414F1 /* ProfileViewController.swift in Sources */,
 				1FFBE21E2859F1EC00B4DA56 /* AppDelegate.swift in Sources */,
+				1F7CE30C28784A7A00661044 /* DataModel.swift in Sources */,
 				1FFBE2202859F1EC00B4DA56 /* SceneDelegate.swift in Sources */,
 				1F97F392285CA2580047A41D /* versionItem.swift in Sources */,
 				1F7FD28A2872B7E900AE2D54 /* DemoModel.xcdatamodeld in Sources */,

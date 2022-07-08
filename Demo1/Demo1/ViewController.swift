@@ -7,12 +7,7 @@
 
 import UIKit
 
-struct menu {
-    let imageName: String
-    let title: String
-}
-
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class ViewController: UIViewController {
     
     var isSeen = false
     var homePage = HomePage(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
@@ -81,6 +76,54 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return newImage
     }
     
+    @objc func onClick() {
+        showHide()
+    }
+    
+    @objc private func didSwipe(_ sender: UISwipeGestureRecognizer) {
+       showHide()
+    }
+    
+    func showHide() {
+        if !isSeen {
+            homePage.vw_menu.isHidden = false
+            if UIDevice.current.orientation.isPortrait {
+                homePage.vw_menu.frame = CGRect(x: -UIScreen.main.bounds.width, y: 0, width: homePage.vw_menu.bounds.width, height: UIScreen.main.bounds.height)
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.homePage.vw_menu.frame = CGRect(x: 0, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
+                }, completion: nil)
+            } else {
+                homePage.vw_menu.frame = CGRect(x: -UIScreen.main.bounds.width, y: 0, width: homePage.vw_menu.bounds.width, height: UIScreen.main.bounds.height)
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.homePage.vw_menu.frame = CGRect(x: 0, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
+                }, completion: nil)
+            }
+        } else {
+            if UIDevice.current.orientation.isPortrait {
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.homePage.vw_menu.frame = CGRect(x: -self.homePage.vw_menu.bounds.width, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
+                }, completion: {_ in
+                    self.homePage.vw_menu.isHidden = true
+                })
+            } else {
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.homePage.vw_menu.frame = CGRect(x: -self.homePage.vw_menu.bounds.width, y: 30, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
+                }, completion: {_ in
+                    self.homePage.vw_menu.isHidden = true
+                })
+            }
+        }
+        isSeen = !isSeen
+    }
+   
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        homePage.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: self.view.bounds.height)
+    }
+}
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -138,9 +181,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             backItem.tintColor = UIColor(hexaRGB: "#2D69B1")
             navigationItem.backBarButtonItem = backItem
             
-            let Storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let signUpVC = Storyboard.instantiateViewController(withIdentifier: "SignUp") as! SignUpViewController
-            self.navigationController?.pushViewController(signUpVC, animated: true)
+//            let Storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let signUpVC = Storyboard.instantiateViewController(withIdentifier: "SignUp") as! SignUpViewController
+            self.navigationController?.pushViewController(SignUpViewController(), animated: true)
             break
             
         case "Profile Page":
@@ -148,9 +191,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             backItem.tintColor = UIColor(hexaRGB: "#2D69B1")
             navigationItem.backBarButtonItem = backItem
             
-            let Storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let profileVC = Storyboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
-            self.navigationController?.pushViewController(profileVC, animated: true)
+//            let Storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let profileVC = Storyboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
+            self.navigationController?.pushViewController(ProfileViewController(), animated: true)
             break
             
         case "Users":
@@ -167,48 +210,4 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
-    @objc func onClick() {
-        showHide()
-    }
-    
-    @objc private func didSwipe(_ sender: UISwipeGestureRecognizer) {
-       showHide()
-    }
-    
-    func showHide() {
-        if !isSeen {
-            homePage.vw_menu.isHidden = false
-            if UIDevice.current.orientation.isPortrait {
-                homePage.vw_menu.frame = CGRect(x: -UIScreen.main.bounds.width, y: 0, width: homePage.vw_menu.bounds.width, height: UIScreen.main.bounds.height)
-                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                    self.homePage.vw_menu.frame = CGRect(x: 0, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
-                }, completion: nil)
-            } else {
-                homePage.vw_menu.frame = CGRect(x: -UIScreen.main.bounds.width, y: 0, width: homePage.vw_menu.bounds.width, height: UIScreen.main.bounds.height)
-                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                    self.homePage.vw_menu.frame = CGRect(x: 0, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
-                }, completion: nil)
-            }
-        } else {
-            if UIDevice.current.orientation.isPortrait {
-                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                    self.homePage.vw_menu.frame = CGRect(x: -self.homePage.vw_menu.bounds.width, y: 0, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
-                }, completion: {_ in
-                    self.homePage.vw_menu.isHidden = true
-                })
-            } else {
-                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                    self.homePage.vw_menu.frame = CGRect(x: -self.homePage.vw_menu.bounds.width, y: 30, width: self.homePage.vw_menu.bounds.width, height: self.homePage.vw_menu.bounds.height)
-                }, completion: {_ in
-                    self.homePage.vw_menu.isHidden = true
-                })
-            }
-        }
-        isSeen = !isSeen
-    }
-   
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        homePage.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: self.view.bounds.height)
-    }
 }

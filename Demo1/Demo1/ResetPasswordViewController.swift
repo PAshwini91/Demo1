@@ -18,6 +18,7 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     
     var users: [NSManagedObject] = []
     var person = NSManagedObject()
+    let dataModel = persistentDataADC()
     let selectedUserPosition = UserDefaults.standard.integer(forKey: "selectedPosition")
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,24 +55,26 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         
         self.errorMessage.text = ""
         
-        lazy var persistentContainer: NSPersistentContainer = {
-            let container = NSPersistentContainer(name: "DemoModel")
-            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-                if let error = error as NSError? {
-                    fatalError("Unresolved error \(error), \(error.userInfo)")
-                }
-            })
-            return container
-        }()
-        
-        let managedContext = persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Users")
-        do {
-            users = try managedContext.fetch(fetchRequest)
-            person = users[selectedUserPosition]
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
+//        lazy var persistentContainer: NSPersistentContainer = {
+//            let container = NSPersistentContainer(name: "DemoModel")
+//            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+//                if let error = error as NSError? {
+//                    fatalError("Unresolved error \(error), \(error.userInfo)")
+//                }
+//            })
+//            return container
+//        }()
+//
+//        let managedContext = persistentContainer.viewContext
+//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Users")
+//        do {
+//            users = try managedContext.fetch(fetchRequest)
+//            person = users[selectedUserPosition]
+//        } catch let error as NSError {
+//            print("Could not fetch. \(error), \(error.userInfo)")
+//        }
+        users = dataModel.fetchData(entityName: "Users")
+        person = users[selectedUserPosition]
         
         guard let oldPassword = password.text, oldPassword != "" else {
             self.errorMessage.text = "Please enter your password."
@@ -106,27 +109,24 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
             let alert = UIAlertController(title: "", message: "Are you sure?", preferredStyle: .alert)
             
             let yes = UIAlertAction(title: "Yes", style: .default) { (action) -> Void in
-                do {
-                    self.person.setValue(newPassword, forKey: "password")
-                    try managedContext.save()
-                    
-                    self.password.text = ""
-                    self.newPassword.text = ""
-                    self.confirmPassword.text = ""
-                    
-                    let successAlert = UIAlertController(title: "", message: "Your password is reset successfully.", preferredStyle: .alert)
-                    
-                    let ok = UIAlertAction(title: "OK", style: .cancel) { (action) -> Void in
-                        print("OK button tapped")
-                    }
-                    
-                    successAlert.addAction(ok)
-                    
-                    self.present(successAlert, animated: true, completion: nil)
-                    
-                } catch let error as NSError {
-                    print("Could not reset password. \(error), \(error.userInfo)")
+                
+                self.person.setValue(newPassword, forKey: "password")
+                self.dataModel.updateData()
+                
+                self.password.text = ""
+                self.newPassword.text = ""
+                self.confirmPassword.text = ""
+                
+                let successAlert = UIAlertController(title: "", message: "Your password is reset successfully.", preferredStyle: .alert)
+                
+                let ok = UIAlertAction(title: "OK", style: .cancel) { (action) -> Void in
+                    print("OK button tapped")
                 }
+                
+                successAlert.addAction(ok)
+                
+                self.present(successAlert, animated: true, completion: nil)
+                
             }
             
             let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in

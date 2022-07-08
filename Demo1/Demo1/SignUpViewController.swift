@@ -12,6 +12,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, OnClickDelega
 
     var signUp = SignUp(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     var users: [NSManagedObject] = []
+    let dataModel = persistentDataADC()
     var errorMessage = ""
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,53 +100,52 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, OnClickDelega
     func onClick() {
         signUp.tv_errorMsg.text = ""
         
-//        guard let firstName = signUp.txt_firstName?.text, firstName != "" else {
-//            signUp.tv_errorMsg.text = "Please enter a name."
-//              return
-//          }
-//
-//        guard let lastName = signUp.txt_lastName?.text, lastName != "" else {
-//            signUp.tv_errorMsg.text = "Please enter a last name."
-//              return
-//          }
-//
-//        guard let email = signUp.txt_email?.text, email != "" else {
-//            signUp.tv_errorMsg.text = "Please enter an email address."
-//              return
-//          }
-//
-//        guard let password = signUp.txt_password?.text, password != "" else {
-//            signUp.tv_errorMsg.text = "Please enter a password."
-//              return
-//          }
-//
-//        guard let confirm_password = signUp.txt_confirmPassword?.text, confirm_password != "" else {
-//            signUp.tv_errorMsg.text = "Please confirm your password."
-//              return
-//          }
-//
-//        if !isValidEmail(email) {
-//            signUp.tv_errorMsg.text = "Please enter a valid email address. "
-//        }
-//
-//        if !password.elementsEqual(confirm_password) {
-//            signUp.tv_errorMsg.text = signUp.tv_errorMsg.text + "Passwords don't match."
-//        }
-//
-//        if !signUp.tv_errorMsg.hasText {
-//            let alert = UIAlertController(title: "", message: "Are you sure?" , preferredStyle: .alert)
-//
-//            let yes = UIAlertAction(title: "YES", style: .default) { (action) -> Void in
-//                self.save(fname: firstName, lname: lastName, email: email, password: password)
-//                self.signUp.sw_termsConditions.setOn(false, animated: false)
-//                print("YES button tapped")
-//            }
-//            alert.addAction(yes)
-//            self.present(alert, animated: true, completion: nil)
-//        }
-        
-        let userListVC = UserListTableViewController()
-        self.navigationController?.pushViewController(userListVC, animated: true)
+        guard let firstName = signUp.txt_firstName?.text, firstName != "" else {
+            signUp.tv_errorMsg.text = "Please enter a name."
+              return
+          }
+
+        guard let lastName = signUp.txt_lastName?.text, lastName != "" else {
+            signUp.tv_errorMsg.text = "Please enter a last name."
+              return
+          }
+
+        guard let email = signUp.txt_email?.text, email != "" else {
+            signUp.tv_errorMsg.text = "Please enter an email address."
+              return
+          }
+
+        guard let password = signUp.txt_password?.text, password != "" else {
+            signUp.tv_errorMsg.text = "Please enter a password."
+              return
+          }
+
+        guard let confirm_password = signUp.txt_confirmPassword?.text, confirm_password != "" else {
+            signUp.tv_errorMsg.text = "Please confirm your password."
+              return
+          }
+
+        if !isValidEmail(email) {
+            signUp.tv_errorMsg.text = "Please enter a valid email address. "
+        }
+
+        if !password.elementsEqual(confirm_password) {
+            signUp.tv_errorMsg.text = signUp.tv_errorMsg.text + "Passwords don't match."
+        }
+
+        if !signUp.tv_errorMsg.hasText {
+            let alert = UIAlertController(title: "", message: "Are you sure?" , preferredStyle: .alert)
+
+            let yes = UIAlertAction(title: "Yes", style: .default) { (action) -> Void in
+                self.save(fname: firstName, lname: lastName, email: email, password: password)
+                self.signUp.sw_termsConditions.setOn(false, animated: false)
+                print("YES button tapped")
+            }
+            alert.addAction(yes)
+            self.present(alert, animated: true, completion: nil)
+        }
+      
+//        self.navigationController?.pushViewController(UserListTableViewController(), animated: true)
     }
     
     func save(fname: String, lname: String, email: String, password: String) {
@@ -158,39 +158,30 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, OnClickDelega
 //      let managedContext =
 //        appDelegate.persistentContainer.viewContext
 
-        lazy var persistentContainer: NSPersistentContainer = {
-            let container = NSPersistentContainer(name: "DemoModel")
-            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-                if let error = error as NSError? {
-                    fatalError("Unresolved error \(error), \(error.userInfo)")
-                }
-            })
-            return container
-        }()
-        
-      let managedContext = persistentContainer.viewContext
-
-      let entity = NSEntityDescription.entity(forEntityName: "Users", in: managedContext)!
+//        lazy var persistentContainer: NSPersistentContainer = {
+//            let container = NSPersistentContainer(name: "DemoModel")
+//            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+//                if let error = error as NSError? {
+//                    fatalError("Unresolved error \(error), \(error.userInfo)")
+//                }
+//            })
+//            return container
+//        }()
+//
+//      let managedContext = persistentContainer.viewContext
+//
+//      let entity = NSEntityDescription.entity(forEntityName: "Users", in: managedContext)!
       
-      let person = NSManagedObject(entity: entity, insertInto: managedContext)
-
-      person.setValue(fname, forKeyPath: "firstName")
+        let person = dataModel.getEntityInstance(entityName: "Users")
+        
+        person.setValue(fname, forKeyPath: "firstName")
         person.setValue(lname, forKeyPath: "lastName")
         person.setValue(email, forKeyPath: "email")
         person.setValue(password, forKeyPath: "password")
-      
-      do {
-          try managedContext.save()
-          users.append(person)
-          print("User details saved")
-          signUp.tv_errorMsg.text = ""
-          
-          let userListVC = UserListTableViewController()
-          self.navigationController?.pushViewController(userListVC, animated: true)
-          
-      } catch let error as NSError {
-          print("Could not save. \(error), \(error.userInfo)")
-      }
+        
+        dataModel.addData(data: person)
+        
+        self.navigationController?.pushViewController(UserListTableViewController(), animated: true)
     }
     
     func isValidEmail(_ email: String) -> Bool {

@@ -10,6 +10,7 @@ import CoreData
 
 class UserListTableViewController: UITableViewController {
     
+    let dataModel = persistentDataADC()
     var users: [NSManagedObject] = []
     
     override func viewWillAppear(_ animated: Bool) {
@@ -22,23 +23,26 @@ class UserListTableViewController: UITableViewController {
         
         navigationItem.title = "Users"
         
-        lazy var persistentContainer: NSPersistentContainer = {
-            let container = NSPersistentContainer(name: "DemoModel")
-            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-                if let error = error as NSError? {
-                    fatalError("Unresolved error \(error), \(error.userInfo)")
-                }
-            })
-            return container
-        }()
+//        lazy var persistentContainer: NSPersistentContainer = {
+//            let container = NSPersistentContainer(name: "DemoModel")
+//            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+//                if let error = error as NSError? {
+//                    fatalError("Unresolved error \(error), \(error.userInfo)")
+//                }
+//            })
+//            return container
+//        }()
+//
+//        let managedContext = persistentContainer.viewContext
+//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Users")
+//        do {
+//            users = try managedContext.fetch(fetchRequest)
+//        } catch let error as NSError {
+//            print("Could not fetch. \(error), \(error.userInfo)")
+//        }
+
+        users = dataModel.fetchData(entityName: "Users")
         
-        let managedContext = persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Users")
-        do {
-            users = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
         self.tableView.reloadData()
     }
     
@@ -55,20 +59,12 @@ class UserListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        print(users.count)
         return users.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        var cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as? UserTableViewCell
-//
-//        if cell == nil {
-//            tableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "userCell")
-//            cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? UserTableViewCell
-//        }
-//
+        
         let cell = Bundle.main.loadNibNamed("UserTableViewCell", owner: self)?.first as! UserTableViewCell
         let person = users[indexPath.row]
         let fname = person.value(forKey: "firstName") as! String
@@ -85,9 +81,4 @@ class UserListTableViewController: UITableViewController {
         self.navigationController?.pushViewController(userProfileVC, animated: true)
         
     }
-    
-//    @objc func addUserTapped(_ sender: UIBarButtonItem) {
-//
-//    }
-    
 }
