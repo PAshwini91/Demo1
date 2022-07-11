@@ -124,9 +124,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, OnClickDelega
             signUp.tv_errorMsg.text = "Please confirm your password."
               return
           }
+        
+        if String().isNotValidEntry(firstName) {
+            signUp.tv_errorMsg.text = "Please enter a valid name. "
+        }
+        
+        if String().isNotValidEntry(lastName) {
+            signUp.tv_errorMsg.text = signUp.tv_errorMsg.text + "Please enter a valid last name. "
+        }
 
-        if !isValidEmail(email) {
-            signUp.tv_errorMsg.text = "Please enter a valid email address. "
+        if !String().isValidEmail(email) {
+            signUp.tv_errorMsg.text = signUp.tv_errorMsg.text + "Please enter a valid email address. "
         }
 
         if !password.elementsEqual(confirm_password) {
@@ -141,7 +149,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, OnClickDelega
                 self.signUp.sw_termsConditions.setOn(false, animated: false)
                 print("YES button tapped")
             }
+            
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
             alert.addAction(yes)
+            alert.addAction(cancel)
             self.present(alert, animated: true, completion: nil)
         }
       
@@ -183,13 +194,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, OnClickDelega
         
         self.navigationController?.pushViewController(UserListTableViewController(), animated: true)
     }
-    
-    func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
-    }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -210,6 +214,16 @@ extension UIColor {
                 green: .init(strtoul(String(chars[2...3]), nil, 16)) / 255,
                  blue: .init(strtoul(String(chars[4...5]), nil, 16)) / 255,
                 alpha: alpha)
+    }
+}
+
+extension String {
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
     }
 }
 

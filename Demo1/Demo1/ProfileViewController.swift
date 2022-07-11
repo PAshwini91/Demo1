@@ -100,18 +100,20 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
 //            print("Could not fetch. \(error), \(error.userInfo)")
 //        }
         users = dataModel.fetchData(entityName: "Users")
-        person = users[selectedUserPosition]
         
-        profile.txt_firstName.text = person.value(forKey: "firstName") as? String
-        profile.txt_lastName.text = person.value(forKey: "lastName") as? String
-        profile.txt_companyName.text = person.value(forKey: "comapnyName") as? String
-        profile.txt_mobileNumber.text = person.value(forKey: "mobileNumber") as? String
-        profile.txt_address.text = person.value(forKey: "address") as? String
-        profile.txt_addressSec.text = person.value(forKey: "addressSec") as? String
-        profile.txt_state.text = person.value(forKey: "state") as? String
-        profile.txt_city.text = person.value(forKey: "city") as? String
-        profile.txt_zipcode.text = person.value(forKey: "zipcode") as? String
-        profile.txt_country.text = person.value(forKey: "country") as? String
+        if !users.isEmpty {
+            person = users[selectedUserPosition]
+            profile.txt_firstName.text = person.value(forKey: "firstName") as? String
+            profile.txt_lastName.text = person.value(forKey: "lastName") as? String
+            profile.txt_companyName.text = person.value(forKey: "comapnyName") as? String
+            profile.txt_mobileNumber.text = person.value(forKey: "mobileNumber") as? String
+            profile.txt_address.text = person.value(forKey: "address") as? String
+            profile.txt_addressSec.text = person.value(forKey: "addressSec") as? String
+            profile.txt_state.text = person.value(forKey: "state") as? String
+            profile.txt_city.text = person.value(forKey: "city") as? String
+            profile.txt_zipcode.text = person.value(forKey: "zipcode") as? String
+            profile.txt_country.text = person.value(forKey: "country") as? String
+        }
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,
@@ -189,12 +191,64 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
             return
         }
         
-        if !isValidMobileNumber(mobile) {
-            profile.lbl_errorMessage.text = "Please enter a valid mobile number. "
+        if String().isNotValidEntry(firstName) {
+            profile.lbl_errorMessage.text = "Please enter a valid name. "
+        } else {
+            if String().isNotValidName(firstName) {
+                profile.lbl_errorMessage.text = "Please enter a valid name. "
+            }
         }
         
-        if !isValidZipcode(zipcode) {
+        if String().isNotValidEntry(lastName) {
+            profile.lbl_errorMessage.text = profile.lbl_errorMessage.text! + "Please enter a valid last name. "
+        } else {
+            if String().isNotValidName(lastName) {
+                profile.lbl_errorMessage.text = profile.lbl_errorMessage.text! + "Please enter a valid last name. "
+            }
+        }
+        
+        if String().isNotValidEntry(company) {
+            profile.lbl_errorMessage.text = profile.lbl_errorMessage.text! + "Please enter a valid company name. "
+        }
+        
+        if !String().isValidMobileNumber(mobile) {
+            profile.lbl_errorMessage.text = profile.lbl_errorMessage.text! + "Please enter a valid mobile number. "
+        }
+        
+        if String().isNotValidEntry(address) {
+            profile.lbl_errorMessage.text = profile.lbl_errorMessage.text! + "Please enter a valid address. "
+        }
+        
+        if String().isNotValidEntry(addressSec) {
+            profile.lbl_errorMessage.text = profile.lbl_errorMessage.text! + "Please enter a valid second address. "
+        }
+        
+        if String().isNotValidEntry(state) {
+            profile.lbl_errorMessage.text = profile.lbl_errorMessage.text! + "Please enter a valid state. "
+        } else {
+            if String().isNotValidName(state) {
+                profile.lbl_errorMessage.text = profile.lbl_errorMessage.text! + "Please enter a valid state. "
+            }
+        }
+        
+        if String().isNotValidEntry(city) {
+            profile.lbl_errorMessage.text = profile.lbl_errorMessage.text! + "Please enter a valid city. "
+        } else {
+            if String().isNotValidName(city) {
+                profile.lbl_errorMessage.text = profile.lbl_errorMessage.text! + "Please enter a valid city. "
+            }
+        }
+        
+        if !String().isValidZipcode(zipcode) {
             profile.lbl_errorMessage.text = profile.lbl_errorMessage.text! + "Please enter a valid zipcode. "
+        }
+        
+        if String().isNotValidEntry(country) {
+            profile.lbl_errorMessage.text = profile.lbl_errorMessage.text! + "Please enter a valid country. "
+        } else {
+            if String().isNotValidName(country) {
+                profile.lbl_errorMessage.text = profile.lbl_errorMessage.text! + "Please enter a valid country. "
+            }
         }
         
         if profile.lbl_errorMessage.text == "" {
@@ -267,6 +321,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
 //                }
                 
                 self.dataModel.deleteData(entityName: "Users", position: self.selectedUserPosition)
+                UserDefaults.standard.removeObject(forKey: "selectedPosition")
                 self.navigationController?.popViewController(animated: true)
             }
             
@@ -351,6 +406,32 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
 //        }
     }
     
+    
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        profile.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: self.view.bounds.height)
+    }
+    
+}
+
+extension String {
+    func isNotValidEntry(_ text: String) -> Bool {
+        let regEx = "[^A-Za-z0-9]"
+        let firstChar = text.prefix(1)
+        
+        let textEntryCheck = NSPredicate(format: "SELF MATCHES[c] %@", regEx)
+        return textEntryCheck.evaluate(with: firstChar)
+    }
+    
+    func isNotValidName(_ name: String) -> Bool {
+        let regEx = ".*[^A-Za-z].*"
+        
+        let nameCheck = NSPredicate(format: "SELF MATCHES[c] %@", regEx)
+        print(nameCheck.evaluate(with: name))
+        return nameCheck.evaluate(with: name)
+    }
+    
     func isValidMobileNumber(_ mobileNumber: String) -> Bool {
         let regEx = "^\\+(?:[0-9]?){6,14}[0-9]$"
         
@@ -364,10 +445,4 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, OnClickDeleg
         let mobileNumberCheck = NSPredicate(format: "SELF MATCHES[c] %@", regEx)
         return mobileNumberCheck.evaluate(with: zipcode)
     }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        profile.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: self.view.bounds.height)
-    }
-    
 }
