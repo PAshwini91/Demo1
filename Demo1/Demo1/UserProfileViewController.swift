@@ -502,29 +502,7 @@ class UserProfileViewController: UIViewController, UITextFieldDelegate {
                 i += 1
             }
             
-            self.errorCounter = 0
-            
-            self.firstNameLabel.text = "First Name"
-            self.lastNameLabel.text = "Last Name"
-            self.companyNameLabel.text = "Company Name"
-            self.mobileNumberLabel.text = "Mobile Number"
-            self.addressLabel.text = "Address"
-            self.addressSecLabel.text = "Address Sec"
-            self.stateLabel.text = "State"
-            self.cityLabel.text = "City"
-            self.zipcodeLabel.text = "Zipcode"
-            self.countryLabel.text = "Country"
-            
-            self.firstNameLabel.textColor = .black
-            self.lastNameLabel.textColor = .black
-            self.companyNameLabel.textColor = .black
-            self.mobileNumberLabel.textColor = .black
-            self.addressLabel.textColor = .black
-            self.addressSecLabel.textColor = .black
-            self.stateLabel.textColor = .black
-            self.cityLabel.textColor = .black
-            self.zipcodeLabel.textColor = .black
-            self.countryLabel.textColor = .black
+            self.resetFields()
             
         }
         successAlert.addAction(ok)
@@ -564,34 +542,37 @@ class UserProfileViewController: UIViewController, UITextFieldDelegate {
         
         let successAlert = UIAlertController(title: "", message: "User details updated", preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
-            
-            self.errorCounter = 0
-            
-            self.firstNameLabel.text = "First Name"
-            self.lastNameLabel.text = "Last Name"
-            self.companyNameLabel.text = "Company Name"
-            self.mobileNumberLabel.text = "Mobile Number"
-            self.addressLabel.text = "Address"
-            self.addressSecLabel.text = "Address Sec"
-            self.stateLabel.text = "State"
-            self.cityLabel.text = "City"
-            self.zipcodeLabel.text = "Zipcode"
-            self.countryLabel.text = "Country"
-            
-            self.firstNameLabel.textColor = .black
-            self.lastNameLabel.textColor = .black
-            self.companyNameLabel.textColor = .black
-            self.mobileNumberLabel.textColor = .black
-            self.addressLabel.textColor = .black
-            self.addressSecLabel.textColor = .black
-            self.stateLabel.textColor = .black
-            self.cityLabel.textColor = .black
-            self.zipcodeLabel.textColor = .black
-            self.countryLabel.textColor = .black
+            self.resetFields()
         }
         successAlert.addAction(ok)
         
         self.present(successAlert, animated: true, completion: nil)
+    }
+    
+    func resetFields() {
+        self.errorCounter = 0
+        
+        self.firstNameLabel.text = "First Name"
+        self.lastNameLabel.text = "Last Name"
+        self.companyNameLabel.text = "Company Name"
+        self.mobileNumberLabel.text = "Mobile Number"
+        self.addressLabel.text = "Address"
+        self.addressSecLabel.text = "Address Sec"
+        self.stateLabel.text = "State"
+        self.cityLabel.text = "City"
+        self.zipcodeLabel.text = "Zipcode"
+        self.countryLabel.text = "Country"
+        
+        self.firstNameLabel.textColor = .black
+        self.lastNameLabel.textColor = .black
+        self.companyNameLabel.textColor = .black
+        self.mobileNumberLabel.textColor = .black
+        self.addressLabel.textColor = .black
+        self.addressSecLabel.textColor = .black
+        self.stateLabel.textColor = .black
+        self.cityLabel.textColor = .black
+        self.zipcodeLabel.textColor = .black
+        self.countryLabel.textColor = .black
     }
     
 }
