@@ -80,6 +80,7 @@ class persistentDataADC {
         let managedContext = persistentContainer.viewContext
         do {
             try managedContext.save()
+            
         } catch let error as NSError {
             print("Could not update. \(error), \(error.userInfo)")
         }

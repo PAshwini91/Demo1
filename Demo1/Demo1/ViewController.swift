@@ -181,9 +181,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             backItem.tintColor = UIColor(hexaRGB: "#2D69B1")
             navigationItem.backBarButtonItem = backItem
             
-//            let Storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let signUpVC = Storyboard.instantiateViewController(withIdentifier: "SignUp") as! SignUpViewController
-            self.navigationController?.pushViewController(SignUpViewController(), animated: true)
+            self.navigationController?.pushViewController(RegistrationViewController(), animated: true)
             break
             
         case "Profile Page":
@@ -191,9 +189,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             backItem.tintColor = UIColor(hexaRGB: "#2D69B1")
             navigationItem.backBarButtonItem = backItem
             
-//            let Storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let profileVC = Storyboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
-            self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+            UserDefaults.standard.set("Yes", forKey: "selectedFromMenu")
+            
+            self.navigationController?.pushViewController(UserProfileViewController(), animated: true)
             break
             
         case "Users":
@@ -201,8 +199,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             backItem.tintColor = UIColor(hexaRGB: "#2D69B1")
             navigationItem.backBarButtonItem = backItem
             
-//            let Storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let profileVC = Storyboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
             self.navigationController?.pushViewController(UserListTableViewController(), animated: true)
             break
         default:

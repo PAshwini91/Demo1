@@ -22,24 +22,6 @@ class UserListTableViewController: UITableViewController {
         navigationItem.backBarButtonItem = backItem
         
         navigationItem.title = "Users"
-        
-//        lazy var persistentContainer: NSPersistentContainer = {
-//            let container = NSPersistentContainer(name: "DemoModel")
-//            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-//                if let error = error as NSError? {
-//                    fatalError("Unresolved error \(error), \(error.userInfo)")
-//                }
-//            })
-//            return container
-//        }()
-//
-//        let managedContext = persistentContainer.viewContext
-//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Users")
-//        do {
-//            users = try managedContext.fetch(fetchRequest)
-//        } catch let error as NSError {
-//            print("Could not fetch. \(error), \(error.userInfo)")
-//        }
 
         users = dataModel.fetchData(entityName: "Users")
         
@@ -75,10 +57,10 @@ class UserListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UserDefaults.standard.set("No", forKey: "selectedFromMenu")
         UserDefaults.standard.set(indexPath.row, forKey: "selectedPosition")
         
-        let userProfileVC = ProfileViewController()
-        self.navigationController?.pushViewController(userProfileVC, animated: true)
+        self.navigationController?.pushViewController(UserProfileViewController(), animated: true)
         
     }
 }

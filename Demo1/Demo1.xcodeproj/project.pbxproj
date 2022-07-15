@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F4AC6CA286054230032C57A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4AC6C8286054230032C57A /* SignUpViewController.swift */; };
-		1F4AC6CB286054230032C57A /* SignUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4AC6C9286054230032C57A /* SignUp.xib */; };
+		1F19798E28803B2E00D14528 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19798C28803B2E00D14528 /* RegistrationViewController.swift */; };
+		1F19798F28803B2E00D14528 /* RegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F19798D28803B2E00D14528 /* RegistrationViewController.xib */; };
+		1F5BE17D2881A9BF00263690 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5BE17B2881A9BF00263690 /* UserProfileViewController.swift */; };
+		1F5BE17E2881A9BF00263690 /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F5BE17C2881A9BF00263690 /* UserProfileViewController.xib */; };
 		1F7CE30C28784A7A00661044 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7CE30B28784A7A00661044 /* DataModel.swift */; };
 		1F7FD28A2872B7E900AE2D54 /* DemoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FD2882872B7E900AE2D54 /* DemoModel.xcdatamodeld */; };
 		1F7FD28D2872FFCA00AE2D54 /* UserListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FD28B2872FFCA00AE2D54 /* UserListTableViewController.swift */; };
@@ -17,10 +19,6 @@
 		1F7FD293287302E400AE2D54 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7FD291287302E400AE2D54 /* UserTableViewCell.xib */; };
 		1F80B9D12877025B00E67B7C /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F80B9CF2877025B00E67B7C /* ResetPasswordViewController.swift */; };
 		1F80B9D22877025B00E67B7C /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F80B9D02877025B00E67B7C /* ResetPasswordViewController.xib */; };
-		1F97496D2861ECBE00A414F1 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97496C2861ECBE00A414F1 /* SignUp.swift */; };
-		1F97496F2863142300A414F1 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97496E2863142300A414F1 /* Profile.swift */; };
-		1F9749712863143400A414F1 /* Profile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F9749702863143400A414F1 /* Profile.xib */; };
-		1F9749732863147600A414F1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9749722863147600A414F1 /* ProfileViewController.swift */; };
 		1F97F38E285CA1480047A41D /* menuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97F38C285CA1480047A41D /* menuItem.swift */; };
 		1F97F38F285CA1480047A41D /* menuItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F97F38D285CA1480047A41D /* menuItem.xib */; };
 		1F97F392285CA2580047A41D /* versionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97F390285CA2580047A41D /* versionItem.swift */; };
@@ -55,8 +53,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F4AC6C8286054230032C57A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		1F4AC6C9286054230032C57A /* SignUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUp.xib; sourceTree = "<group>"; };
+		1F19798C28803B2E00D14528 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		1F19798D28803B2E00D14528 /* RegistrationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationViewController.xib; sourceTree = "<group>"; };
+		1F5BE17B2881A9BF00263690 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		1F5BE17C2881A9BF00263690 /* UserProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
 		1F7CE30B28784A7A00661044 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		1F7FD2892872B7E900AE2D54 /* DemoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DemoModel.xcdatamodel; sourceTree = "<group>"; };
 		1F7FD28B2872FFCA00AE2D54 /* UserListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTableViewController.swift; sourceTree = "<group>"; };
@@ -65,10 +65,6 @@
 		1F7FD291287302E400AE2D54 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 		1F80B9CF2877025B00E67B7C /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		1F80B9D02877025B00E67B7C /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
-		1F97496C2861ECBE00A414F1 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
-		1F97496E2863142300A414F1 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		1F9749702863143400A414F1 /* Profile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Profile.xib; sourceTree = "<group>"; };
-		1F9749722863147600A414F1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1F97F38C285CA1480047A41D /* menuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuItem.swift; sourceTree = "<group>"; };
 		1F97F38D285CA1480047A41D /* menuItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = menuItem.xib; sourceTree = "<group>"; };
 		1F97F390285CA2580047A41D /* versionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = versionItem.swift; sourceTree = "<group>"; };
@@ -148,12 +144,10 @@
 				1F97F390285CA2580047A41D /* versionItem.swift */,
 				1FBB4E27285B26B80003A889 /* Main.storyboard */,
 				1FFBE2212859F1EC00B4DA56 /* ViewController.swift */,
-				1F4AC6C9286054230032C57A /* SignUp.xib */,
-				1F97496C2861ECBE00A414F1 /* SignUp.swift */,
-				1F4AC6C8286054230032C57A /* SignUpViewController.swift */,
-				1F9749702863143400A414F1 /* Profile.xib */,
-				1F97496E2863142300A414F1 /* Profile.swift */,
-				1F9749722863147600A414F1 /* ProfileViewController.swift */,
+				1F19798D28803B2E00D14528 /* RegistrationViewController.xib */,
+				1F19798C28803B2E00D14528 /* RegistrationViewController.swift */,
+				1F5BE17C2881A9BF00263690 /* UserProfileViewController.xib */,
+				1F5BE17B2881A9BF00263690 /* UserProfileViewController.swift */,
 				1F7FD28C2872FFCA00AE2D54 /* UserListTableViewController.xib */,
 				1F7FD28B2872FFCA00AE2D54 /* UserListTableViewController.swift */,
 				1F7FD291287302E400AE2D54 /* UserTableViewCell.xib */,
@@ -291,12 +285,12 @@
 				1FBB4E26285B1C970003A889 /* HomePage.xib in Resources */,
 				1F80B9D22877025B00E67B7C /* ResetPasswordViewController.xib in Resources */,
 				1F97F393285CA2580047A41D /* versionItem.xib in Resources */,
-				1F4AC6CB286054230032C57A /* SignUp.xib in Resources */,
 				1FFBE22A2859F1ED00B4DA56 /* LaunchScreen.storyboard in Resources */,
 				1F7FD293287302E400AE2D54 /* UserTableViewCell.xib in Resources */,
+				1F5BE17E2881A9BF00263690 /* UserProfileViewController.xib in Resources */,
 				1F97F38F285CA1480047A41D /* menuItem.xib in Resources */,
-				1F9749712863143400A414F1 /* Profile.xib in Resources */,
 				1F7FD28E2872FFCA00AE2D54 /* UserListTableViewController.xib in Resources */,
+				1F19798F28803B2E00D14528 /* RegistrationViewController.xib in Resources */,
 				1FFBE2272859F1ED00B4DA56 /* Assets.xcassets in Resources */,
 				1FBB4E28285B26B80003A889 /* Main.storyboard in Resources */,
 			);
@@ -325,17 +319,15 @@
 			files = (
 				1FFBE2222859F1EC00B4DA56 /* ViewController.swift in Sources */,
 				1F7FD292287302E400AE2D54 /* UserTableViewCell.swift in Sources */,
-				1F4AC6CA286054230032C57A /* SignUpViewController.swift in Sources */,
-				1F9749732863147600A414F1 /* ProfileViewController.swift in Sources */,
 				1FFBE21E2859F1EC00B4DA56 /* AppDelegate.swift in Sources */,
+				1F5BE17D2881A9BF00263690 /* UserProfileViewController.swift in Sources */,
 				1F7CE30C28784A7A00661044 /* DataModel.swift in Sources */,
 				1FFBE2202859F1EC00B4DA56 /* SceneDelegate.swift in Sources */,
 				1F97F392285CA2580047A41D /* versionItem.swift in Sources */,
 				1F7FD28A2872B7E900AE2D54 /* DemoModel.xcdatamodeld in Sources */,
 				1F7FD28D2872FFCA00AE2D54 /* UserListTableViewController.swift in Sources */,
-				1F97496D2861ECBE00A414F1 /* SignUp.swift in Sources */,
+				1F19798E28803B2E00D14528 /* RegistrationViewController.swift in Sources */,
 				1F97F38E285CA1480047A41D /* menuItem.swift in Sources */,
-				1F97496F2863142300A414F1 /* Profile.swift in Sources */,
 				1FBB4E24285B1C030003A889 /* HomePage.swift in Sources */,
 				1F80B9D12877025B00E67B7C /* ResetPasswordViewController.swift in Sources */,
 			);
